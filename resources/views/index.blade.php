@@ -12,15 +12,15 @@
 <div>
     <form action="question" target="_blank" method="post">
         @csrf
-        <p>ニックネーム</p>
         <input type="text" name="name">
-        <p>学校名</p>
+        <p>ニックネーム</p>
         <input type="text" name="school">
-        <p>メールアドレス</p>
+        <p>学校名</p>
         <input type="text" name="mail">
-        <p>性別</p>
+        <p>メールアドレス</p>
         <input type="radio" name="gender" value="男">男
         <input type="radio" name="gender" value="女">女
+        <p>性別</p>
         <br>
         <button type="submit">OK</button>
     </form>
