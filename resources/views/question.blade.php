@@ -17,6 +17,9 @@
         </ul>
     </div>
     <div>
+        <canvas id="screen"></canvas>
+    </div>
+    <div>
         <h1>質問</h1>
     </div>
     <div class="question1">
