@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::match(['get', 'post'],'/','topPage@index');
 Route::match(['get', 'post'],'question','question@index');
+Route::match(['get', 'post'],'teacherTop','TeacherTop@index');
+Route::match(['get', 'post'],'class','classPage@index');
+Route::match(['get', 'post'],'studentResult','StudentResult@index');

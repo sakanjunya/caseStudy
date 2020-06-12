@@ -20,6 +20,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "git": "^0.1.5"
+        "git": "^0.1.5",
+        "material-design-icons": "^3.0.1"
     }
 }
