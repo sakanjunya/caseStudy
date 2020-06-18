@@ -44,7 +44,7 @@
         @for($i = 1 ;$i <= 3; $i++)
             <tr>
                 <td>
-                    <a href="studentDetail">
+                    <a href="studentDetail" target="_blank">
                         @if($i % 7 == 0)
                             しなかった
                         @else
