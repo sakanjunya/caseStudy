@@ -33,7 +33,7 @@
 {{--カードデザイン（セールスポイント）--}}
     <div class="row mx-auto" id="cardBox">
         <div class="col-md-3">
-            <div class="w-75 mx-auto text-center">
+            <div class="w-75 mx-auto text-center shadow-sm">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="w-75 mx-auto text-center">
+            <div class="w-75 mx-auto text-center shadow-sm">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="w-75 mx-auto text-center">
+            <div class="w-75 mx-auto text-center shadow-sm">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="w-75 mx-auto text-center">
+            <div class="w-75 mx-auto text-center shadow-sm">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Header</div>
                     <div class="card-body">
@@ -84,7 +84,7 @@
         </div>
         <div class="col-md-6  align-self-center">
             <div class="bg-light mx-auto p-5">
-                <h3 class="text-center border-bottom p-4">進路相談を手助けします</h3>
+                <h3 class="text-center border-bottom p-4 text-info">進路相談を手助けします</h3>
                 <p class="text-muted mt-5">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ</p>
             </div>
         </div>
