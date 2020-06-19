@@ -1,4 +1,3 @@
-{{--<link rel="stylesheet" href="/caseStudy/resources/views/css/teacherHeader.css">--}}
 <nav class="navbar navbar-light bg-light" style="margin: 0">
     <p class="navbar-brand" id="userName">ユーザー名</p>
     <form class="form-inline ml-auto">
