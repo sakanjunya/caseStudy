@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <link rel="stylesheet" href="/caseStudy/resources/views/css/index.css">
+    <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/jpn.css@latest/dist/bootstrap/jpn.min.css">
     <title>case study</title>
 </head>
-<body class="bg-light">
-@include('modal.modal')
-
+<body>
+    @include('header.logoutHeader')
     <div>
 {{--   ヘッダーimport     --}}
-        @include('header.logoutHeader')
     </div>
+@include('modal.modal')
 {{--見出し--}}
     <div class="container-fluid text-center text-md-left">
         <div class="text-center mt-5">

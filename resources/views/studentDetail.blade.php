@@ -12,6 +12,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <link rel="stylesheet" href="/caseStudy/resources/views/css/studentResult.css">
+    <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
+
     <title>case study</title>
 </head>
 <body>

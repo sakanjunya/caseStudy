@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
     <title>case study</title>
     <script>
         $('#modalLRForm').on('shown.bs.modal', function () {
@@ -16,7 +17,7 @@
         })
     </script>
 </head>
-<body class="bg-light">
+<body>
 <div>
     @include('header.teacherLoginHeader')
 </div>
@@ -35,7 +36,7 @@
     <div class="row m-5" style="min-width: 100%">
     @endif
     <div class="col-md-3">
-        <a class="card mb-3" href="class">
+        <a class="card mb-3 shadow-sm" href="class">
             <div class="card-body">
                 <h5 class="card-title">クラス名</h5>
                 <p class="card-text pl-5">担任名</p>

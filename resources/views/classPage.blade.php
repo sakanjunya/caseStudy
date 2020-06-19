@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
     <title>case study</title>
     <script>
         $('#modalLRForm').on('shown.bs.modal', function () {
@@ -20,8 +21,14 @@
 <div>
     @include('header.teacherLoginHeader')
 </div>
-<div class="text-center mt-5">
-    <h1 class="pt-5">クラス名</h1>
+<div class="bg-white">
+    <nav aria-label="breadcrumb" class="bg-white">
+        <ol class="breadcrumb bg-white">
+            <li class="breadcrumb-item"><a href="teacherTop">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">クラス詳細</li>
+        </ol>
+    </nav>
+    <h1 class="pb-5 pl-5">クラス名</h1>
 </div>
 <div class="m-5">
     <table class="table table-striped table-hover">
