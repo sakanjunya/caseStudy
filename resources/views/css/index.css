@@ -1,6 +1,9 @@
 body{
     background-color: #f2f2f2;
 }
+#headerLink{
+    transition : 3s;
+}
 #btnBox{
     margin: 9.5% 0;
 }

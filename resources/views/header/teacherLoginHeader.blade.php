@@ -1,5 +1,5 @@
 {{--<link rel="stylesheet" href="/caseStudy/resources/views/css/teacherHeader.css">--}}
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-dark bg-secondary">
     <p class="navbar-brand" id="userName">ユーザー名</p>
     <form class="form-inline ml-auto">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">

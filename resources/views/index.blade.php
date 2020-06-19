@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/jpn.css@latest/dist/bootstrap/jpn.min.css">
     <title>case study</title>
 </head>
-<body>
+<body class="bg-light">
 @include('modal.modal')
 
     <div>
@@ -28,7 +28,7 @@
     </div>
 {{--ボタン--}}
     <div id="btnBox">
-        <a href="*" class="mx-auto" id="loginBtn" data-toggle="modal" data-target="#modalLRForm">診断スタート</a>
+        <a href="" class="mx-auto" id="loginBtn" data-toggle="modal" data-target="#modalLRForm">診断スタート</a>
     </div>
 {{--カードデザイン（セールスポイント）--}}
     <div class="row mx-auto" id="cardBox">
@@ -103,7 +103,7 @@
 
         <div class="col-md-4 ml-5" id="content2Img">
         </div>
-        <div class="col-md-6  align-self-center">
+        <div class="col-md-6 align-self-center">
             <div class="bg-light mx-auto p-5">
                 <h3 class="text-center border-bottom p-4">あなたの性格を数値化しグラフを作成します。</h3>
                 <p class="text-muted mt-5">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ</p>
