@@ -10,14 +10,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/caseStudy/resources/views/css/studentResult.css">
+    <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
+
     <title>case study</title>
 </head>
 <body>
 <div>
     @include('header.teacherLoginHeader')
 </div>
-<div class="mt-5 text-center">
-    <h1 class="pt-5">テスト結果</h1>
+<div class="bg-white">
+    <nav aria-label="breadcrumb" class="bg-white">
+        <ol class="breadcrumb bg-white">
+            <li class="breadcrumb-item"><a href="teacherTop">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="class">クラス詳細</a></li>
+            <li class="breadcrumb-item active" aria-current="page">生徒詳細</li>
+        </ol>
+    </nav>
+    <h1 class="pl-5 pb-5">テスト結果</h1>
 </div>
 <div class="text-center mt-5 flex flex-wrap justify-content-between">
     <h2 class="d-inline mr-5">学生名：学生１</h2>
@@ -44,7 +53,7 @@
         @for($i = 1 ;$i <= 3; $i++)
             <tr>
                 <td>
-                    <a href="studentDetail">
+                    <a href="studentDetail" target="_blank">
                         @if($i % 7 == 0)
                             しなかった
                         @else

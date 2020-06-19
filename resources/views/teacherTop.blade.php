@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
     <title>case study</title>
     <script>
         $('#modalLRForm').on('shown.bs.modal', function () {
@@ -20,26 +21,31 @@
 <div>
     @include('header.teacherLoginHeader')
 </div>
-<div class="mt-5 text-center">
-    <h1 class="pt-5">タイトル</h1>
+<div class="mb-5 bg-white">
+    <nav aria-label="breadcrumb" class="bg-white">
+        <ol class="breadcrumb bg-white m-0">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav>
+    <h1 class="pb-5 pl-5">クラス選択</h1>
 </div>
 {{--    @foreach()--}}
-<div class="card-deck">
-    @for($i=1;$i <=9; $i++)
-    @if($i % 3 == 1 || $i == 1)
-    <div class="row m-5">
+<div class="card-deck w-100">
+    @for($i=1;$i <=8; $i++)
+    @if($i % 4 == 1 || $i == 1)
+    <div class="row m-5" style="min-width: 100%">
     @endif
-    <a class="card col-md-4" href="class">
-        <img src="" class="card-img-top" alt="カード1の画像">
-        <div class="card-body">
-            <h5 class="card-title">カード1のタイトル</h5>
-            <p class="card-text">これは、追加コンテンツへの自然な導入として以下のテキストをサポートする、より幅広いカードです。このコンテンツはもう少し長くなります。</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">最終更新3分前</small>
-        </div>
-    </a>
-    @if($i % 3 == 0)
+    <div class="col-md-3">
+        <a class="card mb-3 shadow-sm" href="class">
+            <div class="card-body">
+                <h5 class="card-title">クラス名</h5>
+                <p class="card-text pl-5">担任名</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </a>
+        </a>
+    </div>
+    @if($i % 4 == 0)
     </div>
     @endif
     @endfor
