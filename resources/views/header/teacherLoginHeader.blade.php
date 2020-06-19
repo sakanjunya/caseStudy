@@ -5,9 +5,9 @@
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button>
     </form>
-    <div class="dropdown ml-auto">
+    <div class="dropdown ml-auto mr-5">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
+            --Menu--
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
