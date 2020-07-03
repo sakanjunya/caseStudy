@@ -24,36 +24,25 @@
 <div class="bg-white">
     <nav aria-label="breadcrumb" class="bg-white">
         <ol class="breadcrumb bg-white">
-            <li class="breadcrumb-item"><a href="teacherTop">Home</a></li>
+            <li class="breadcrumb-item"><a href="../teacherTop">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">クラス詳細</li>
         </ol>
     </nav>
     <h1 class="pb-5 pl-5">クラス名</h1>
 </div>
-<div class="m-5">
-    <table class="table table-striped table-hover">
-        <tr>
-            <th>名前</th>
-            <th>日付</th>
-            <th>結果</th>
-        </tr>
-        @for($i = 1 ;$i <= 30; $i++)
-            <tr>
-                <td>学生{{$i}}</td>
-                <td>2020/2/2</td>
+<div class="m-5 row">
+    @foreach($classmates as $classmate)
+        <div class="mb-3 col-md-3">
+            <a href="../studentResult/{{$classmate['id']}}" class="card bg-light shadow-sm">
+                <div class="card-header">{{$classmate['name']}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">最終更新日：{{$classmate['update_at']}}</h5>
+                    <p class="card-text">詳細を確認する</p>
+                </div>
+            </a>
+        </div>
+    @endforeach
 
-                <td>
-                    <a href="studentResult">
-                        @if($i % 7 == 0)
-                        しなかった
-                        @else
-                        分類結果{{$i}}
-                        @endif
-                    </a>
-                </td>
-            </tr>
-            @endfor
-    </table>
 </div>
 </body>
 </html>

@@ -20,7 +20,10 @@
     </div>
 @include('modal.modal')
 {{--見出し--}}
-    <div class="container-fluid text-center text-md-left">
+    <div class="container-fluid text-center">
+        @if(session('flashMsg'))
+            <small class="font-weight-lighter text-danger text-center">{{session('flashMsg')}}</small>
+        @endif
         <div class="text-center mt-5">
             <h1>将来診断サービス</h1>
             <small class="font-weight-lighter text-muted">本サービスは、将来設計に困っているあなたに少しでも助けになれるよう、A Iによってあなたに合った職業を提示してくれます。</small>
@@ -36,10 +39,9 @@
         <div class="col-md-3">
             <div class="w-75 mx-auto text-center shadow-sm">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">タップまたはクリックするだけ</div>
                     <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <small class="card-text">パソコン、スマホ未経験でも使えます。操作が便利</small>
                     </div>
                 </div>
             </div>
@@ -48,10 +50,21 @@
         <div class="col-md-3">
             <div class="w-75 mx-auto text-center shadow-sm">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">カスタマイズ化UI</div>
                     <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title"></h5>
+                        <small class="card-text">先生と学生、それぞれに特化したUIで、履歴やテストが一目瞭然で確認できる！</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="w-75 mx-auto text-center shadow-sm">
+                <div class="card bg-light mb-3" style="max-width: 20rem;">
+                    <div class="card-header">あらゆるスマートデバイスで利用可能！</div>
+                    <div class="card-body">
+                        <small class="card-text">Webアプリですので、ネット環境さえあれば、いつでも、どこでも利用可能！</small>
                     </div>
                 </div>
             </div>
@@ -60,22 +73,9 @@
         <div class="col-md-3">
             <div class="w-75 mx-auto text-center shadow-sm">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">職種カバーが広範囲で、自分にぴったり職種をアドバイス</div>
                     <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="w-75 mx-auto text-center shadow-sm">
-                <div class="card bg-light mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <small class="card-text">Dialog Flowを利用し、問題の回答結果から、AIによる何百種類の職業から分析.</small>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
         <div class="col-md-6  align-self-center">
             <div class="bg-light mx-auto p-5">
                 <h3 class="text-center border-bottom p-4">進路相談を手助けします</h3>
-                <p class="text-muted mt-5">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ</p>
+                <p class="text-muted mt-5">高校生の文理選択から、将来の仕事の進路まで、どれも人生の将来に関わる選択肢である。一歩間違えると、後悔できず、将来を制限させられることになる。このシステムを使うことによって、五つの特性から、自分の趣味、興味および能力などを全面的に分析し、自分にぴったり職業を助言します。</p>
             </div>
         </div>
     </div>
@@ -106,7 +106,7 @@
         <div class="col-md-6 align-self-center">
             <div class="bg-light mx-auto p-5">
                 <h3 class="text-center border-bottom p-4">あなたの性格を数値化しグラフを作成します。</h3>
-                <p class="text-muted mt-5">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れ</p>
+                <p class="text-muted mt-5">分析の結果は、数値化し、グラフで表示することによって、利用者（生徒）の潜在的なスキルや特性を一目瞭然で確認できる。そして、利用者たちの履歴を元にして、機械学習を活用し、さらに正確性のあるアドバイスを提供することができ、利用者が増えつつ、システムの品質と正確性がもっと良くなっていきます。</p>
             </div>
         </div>
 

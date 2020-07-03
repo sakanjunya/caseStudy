@@ -31,24 +31,23 @@
 </div>
 {{--    @foreach()--}}
 <div class="card-deck w-100">
-    @for($i=1;$i <=8; $i++)
+    {{$i = 1}}
     @if($i % 4 == 1 || $i == 1)
-    <div class="row m-5" style="min-width: 100%">
+    <div class="row w-100">
     @endif
+    @foreach($classrooms as $classroom)
     <div class="col-md-3">
-        <a class="card mb-3 shadow-sm" href="class">
+        <a class="card mb-3 shadow-sm" href="class/{{$classroom['id']}}">
             <div class="card-body">
-                <h5 class="card-title">クラス名</h5>
-                <p class="card-text pl-5">担任名</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title">クラス名：{{$classroom['class_name']}}</h5>
+                <p class="card-text pl-5">教師名：{{$classroom['name']}}</p>
+                <p class="card-text"><small class="text-muted">クリックして詳細を表示→</small></p>
             </div>
         </a>
-        </a>
     </div>
-    @if($i % 4 == 0)
+    <input type="hidden" value="{{$i++}}">
+    @endforeach
     </div>
-    @endif
-    @endfor
 
 </div>
 {{--    @endforeach--}}

@@ -21,21 +21,21 @@
 <div class="bg-white">
     <nav aria-label="breadcrumb" class="bg-white">
         <ol class="breadcrumb bg-white">
-            <li class="breadcrumb-item"><a href="teacherTop">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="class">クラス詳細</a></li>
+            <li class="breadcrumb-item"><a href="../teacherTop">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="../class/{{session('class_id')}}">クラス詳細</a></li>
             <li class="breadcrumb-item active" aria-current="page">生徒詳細</li>
         </ol>
     </nav>
     <h1 class="pl-5 pb-5">テスト結果</h1>
 </div>
 <div class="text-center mt-5 flex flex-wrap justify-content-between">
-    <h2 class="d-inline mr-5">学生名：学生１</h2>
+    <h2 class="d-inline mr-5">学生名：{{$student['name']}}</h2>
     <h2 class="d-inline">/</h2>
-    <h2 class="d-inline ml-5">クラス：クラス１</h2>
+    <h2 class="d-inline ml-5">クラス名：{{$classroom['class_name']}}</h2>
 </div>
 <div class="mt-5">
     <div class="content text-center">
-        <a href="#" class="btn btn-info btn-lg">
+        <a href="../question/{{$student['id']}}" class="btn btn-info btn-lg" target="_blank">
             <span class="glyphicon glyphicon-pencil"></span>
             　テストSTART
         </a>
@@ -53,7 +53,7 @@
         @for($i = 1 ;$i <= 3; $i++)
             <tr>
                 <td>
-                    <a href="studentDetail" target="_blank">
+                    <a href="../studentDetail" target="_blank">
                         @if($i % 7 == 0)
                             しなかった
                         @else

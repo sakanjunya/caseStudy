@@ -1,6 +1,6 @@
 {{--<link rel="stylesheet" href="/caseStudy/resources/views/css/teacherHeader.css">--}}
 <nav class="navbar navbar-light bg-light" style="margin: 0">
-    <p class="navbar-brand" id="userName">ユーザー名</p>
+    <p class="navbar-brand" id="userName">{{session('name')}}</p>
     <form class="form-inline ml-auto">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button>

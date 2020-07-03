@@ -25,22 +25,23 @@
                     <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
                         <!--Body-->
-                        <div class="modal-body mb-1">
+                        <form class="modal-body mb-1" action="userLogin" method="post">
+                            @csrf
                             <div class="md-form form-sm mb-5">
                                 <i class="fas fa-envelope prefix"></i>
-                                <input type="email" id="modalLRInput1" class="form-control form-control-sm validate">
                                 <label data-error="wrong" data-success="right" for="modalLRInput1">Your email</label>
+                                <input type="email" id="modalLRInput1" class="form-control form-control-sm validate" name="mail" required>
                             </div>
 
                             <div class="md-form form-sm mb-4">
                                 <i class="fas fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput2" class="form-control form-control-sm validate">
                                 <label data-error="wrong" data-success="right" for="modalLRInput2">Your password</label>
+                                <input type="password" id="modalLRInput2" class="form-control form-control-sm validate" name="password" required>
                             </div>
                             <div class="text-center mt-2">
                                 <button class="btn btn-info">Log in <i class="fas fa-sign-in"></i></button>
                             </div>
-                        </div>
+                        </form>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-center text-md-right mt-1">
@@ -57,36 +58,50 @@
                     <div class="tab-pane fade" id="panel8" role="tabpanel">
 
                         <!--Body-->
-                        <div class="modal-body">
+                        <form class="modal-body" action="userInsert" method="post">
+                            @csrf
                             <div class="md-form form-sm mb-5">
                                 <i class="fas fa-user"></i>
-                                <input type="email" id="modalLRInput3" class="form-control form-control-sm validate">
                                 <label data-error="wrong" data-success="right" for="modalLRInput3">Your name</label>
+                                <input type="text" id="modalLRInput3" class="form-control form-control-sm validate" name="name" required>
                             </div>
 
                             <div class="md-form form-sm mb-5">
                                 <i class="fas fa-envelope prefix"></i>
-                                <input type="email" id="modalLRInput4" class="form-control form-control-sm validate">
                                 <label data-error="wrong" data-success="right" for="modalLRInput4">Your email</label>
+                                <input type="email" id="modalLRInput4" class="form-control form-control-sm validate" name="mail" required>
+                            </div>
+
+                            <div class="md-form form-sm mb-5">
+                                <i class="fas fa-school"></i>
+                                <label data-error="wrong" data-success="right" for="modalLRInput7">Your school</label>
+                                <div class="form-group">
+                                    <select id="select1a" class="form-control" name="school">
+                                        <option value="" hidden>選択してください</option>
+                                        @foreach($schools as $school)
+                                            <option value="{{$school['id']}}">{{$school['name']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="md-form form-sm mb-5">
                                 <i class="fas fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput5" class="form-control form-control-sm validate">
                                 <label data-error="wrong" data-success="right" for="modalLRInput5">Your password</label>
+                                <input type="password" id="modalLRInput5" class="form-control form-control-sm validate" name="password" required>
                             </div>
 
                             <div class="md-form form-sm mb-4">
                                 <i class="fas fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput6" class="form-control form-control-sm validate">
                                 <label data-error="wrong" data-success="right" for="modalLRInput6">Repeat password</label>
+                                <input type="password" id="modalLRInput6" class="form-control form-control-sm validate" name="repassword" required>
                             </div>
 
                             <div class="text-center form-sm mt-2">
                                 <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
                             </div>
 
-                        </div>
+                        </form>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-right">

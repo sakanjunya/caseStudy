@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\models\Student;
 use Illuminate\Http\Request;
 
 class question extends Controller
 {
     //
-    public function index(Request $request){
-        $user = [
-            'name'=>$request->input('name'),
-            'school'=>$request->input('school'),
-            'mail'=>$request->input('mail'),
-            'gender'=>$request->input('gender')
-        ];
+    public function index(Request $request,int $id){
+        $student = Student::where('id',$id)->first();
+
         return view('question')
-            ->with('user',$user);
+            ->with('student',$student);
     }
 }

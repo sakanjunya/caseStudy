@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <link rel="stylesheet" href="/caseStudy/resources/views/css/studentResult.css">
     <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
+{{--    <link rel="stylesheet" href="{{resource_path()}}/views/css/style.css">--}}
 
     <title>case study</title>
 </head>
@@ -65,6 +66,7 @@
             <div class="card-body">
                 <h5 class="card-title">カード1のタイトル</h5>
                 <p class="card-text">これは、追加コンテンツへの自然な導入として以下のテキストをサポートする、より幅広いカードです。このコンテンツはもう少し長くなります。</p>
+                {{resource_path('')}}
             </div>
         </div>
     </div>
