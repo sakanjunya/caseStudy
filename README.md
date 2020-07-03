@@ -20,3 +20,5 @@
 - 実行に`composer update`が必要なので、入っていない場合はここからダウンロードしてください<a>https://getcomposer.org/</a>
 
 - クローン後上記の `npm install` と `composer update`を行えば、 vendor ,node_modules がインストールされ実行できるようになります。
+
+- .env が .env.exampleに変わっているので、.env に変更してください。
