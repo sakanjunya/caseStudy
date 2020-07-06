@@ -23,7 +23,7 @@ class topPage extends Controller
                 ->with('flashMsg','パスワードの入力が間違っています');
         }
 
-        User::insert([
+        $id = User::insertGetId([
             'name'=>$insert['name'],
             'mail'=>$insert['mail'],
             'password'=>$insert['password'],
@@ -31,6 +31,7 @@ class topPage extends Controller
         ]);
 
         $request->session()->put('name', $insert['name']);
+        $request->session()->put('id', $id);
 
         return redirect('teacherTop');
     }
