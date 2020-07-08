@@ -10,19 +10,18 @@ class TeacherTop extends Controller
 {
     //
     public function index(Request $request){
+        //セッションからIDを取得
         $id = $request->session()->get('id');
-
+        //ID情報からユーザを取得
         $user = User::where('id',$id)->first();
 
-        $user_all = User::all()->toArray();
-
+        //クラス情報を取得、教師名をLEFT JOIN して取得
         $classrooms = Classroom::leftJoin('users', 'users.id', '=', 'classrooms.user_id')
             ->select('users.name', 'classrooms.*')
             ->where('classrooms.school_id',$user['school_id'])
             ->get();
 
         return view('teacherTop')
-            ->with('user_all',$user_all)
             ->with('classrooms',$classrooms);
     }
 }

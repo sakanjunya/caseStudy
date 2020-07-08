@@ -35,6 +35,7 @@
     @if($i % 4 == 1 || $i == 1)
     <div class="row w-100">
     @endif
+{{--   クラス一覧を表示     --}}
     @foreach($classrooms as $classroom)
     <div class="col-md-3">
         <a class="card mb-3 shadow-sm" href="class/{{$classroom['id']}}">

@@ -31,6 +31,7 @@
     <h1 class="pb-5 pl-5">クラス名</h1>
 </div>
 <div class="m-5 row">
+{{--  生徒一覧を表示  --}}
     @foreach($classmates as $classmate)
         <div class="mb-3 col-md-3">
             <a href="../studentResult/{{$classmate['id']}}" class="card bg-light shadow-sm">

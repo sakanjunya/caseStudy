@@ -43,3 +43,14 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+#headerBg{
+    width: 100%;
+    background-image: url("../img/indexHeaderBgimg.jpg");
+    background-color:rgba(255,255,255,0.5);
+    background-blend-mode:lighten;
+    padding: 1%;
+    margin-bottom: 5%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}

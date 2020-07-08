@@ -20,18 +20,20 @@
     </div>
 @include('modal.modal')
 {{--見出し--}}
-    <div class="container-fluid text-center">
-        @if(session('flashMsg'))
-            <small class="font-weight-lighter text-danger text-center">{{session('flashMsg')}}</small>
-        @endif
-        <div class="text-center mt-5">
-            <h1>将来診断サービス</h1>
-            <small class="font-weight-lighter text-muted">本サービスは、将来設計に困っているあなたに少しでも助けになれるよう、A Iによってあなたに合った職業を提示してくれます。</small>
+    <div id="headerBg">
+        <div class="container-fluid text-center">
+            @if(session('flashMsg'))
+                <small class="font-weight-lighter text-danger text-center">{{session('flashMsg')}}</small>
+            @endif
+            <div class="text-center mt-5">
+                <h1>将来診断サービス</h1>
+                <small class="font-weight-lighter text-muted">本サービスは、将来設計に困っているあなたに少しでも助けになれるよう、A Iによってあなたに合った職業を提示してくれます。</small>
+            </div>
         </div>
-    </div>
-{{--ボタン--}}
-    <div id="btnBox">
-        <a href="" class="mx-auto" id="loginBtn" data-toggle="modal" data-target="#modalLRForm">診断スタート</a>
+    {{--ボタン--}}
+        <div id="btnBox">
+            <a href="" class="mx-auto" id="loginBtn" data-toggle="modal" data-target="#modalLRForm">診断スタート</a>
+        </div>
     </div>
 {{--カードデザイン（セールスポイント）--}}
     <div class="row mx-auto" id="cardBox">
@@ -83,7 +85,6 @@
 
     </div>
 
-    <hr>
 {{--一つ目のコンテンツを入力--}}
     <div id="content1" class="row w-100 justify-content-center">
 
@@ -97,7 +98,6 @@
         </div>
     </div>
 
-    <hr>
 {{--二つ目のコンテンツを入力--}}
     <div id="content2" class="row w-100 justify-content-center">
 

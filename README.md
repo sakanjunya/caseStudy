@@ -22,3 +22,5 @@
 - クローン後上記の `npm install` と `composer update`を行えば、 vendor ,node_modules がインストールされ実行できるようになります。
 
 - .env が .env.exampleに変わっているので、.env に変更してください。
+
+- `<form></form>`を扱う際には`@csrf`と記入する必要があります。csrfはform直下に書いてください。
