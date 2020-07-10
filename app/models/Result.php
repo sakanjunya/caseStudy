@@ -9,10 +9,12 @@ class Result extends Model
     //
     protected $fillable = [
         'id',
+        'student_id',
+        'teacher_id',
         'researchability',
         'social',
         'reality',
-        'sciability',
+        'sociability',
         'artisty',
     ];
 }

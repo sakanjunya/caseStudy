@@ -20,5 +20,5 @@ Route::match(['get', 'post'],'question/{id}','question@index');
 Route::match(['get', 'post'],'teacherTop','TeacherTop@index');
 Route::match(['get', 'post'],'class/{id}','classPage@index');
 Route::match(['get', 'post'],'studentResult/{id}','StudentResult@index');
-Route::match(['get', 'post'],'studentDetail','StudentDetail@index');
+Route::match(['get', 'post'],'studentDetail/{id}','StudentDetail@index');
 Route::match(['get', 'post'],'checkDialog','CheckDialog@index');

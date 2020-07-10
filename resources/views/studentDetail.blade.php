@@ -31,13 +31,6 @@
     </div>
     <div class="col-md-6">
         <canvas id="radar" class="chartjs-render-monitor"></canvas>
-        <div>
-            <ul class="flex ">
-                <li>〇〇は/1点</li>
-                <li>〇〇は/1点</li>
-                <li>〇〇は/3点</li>
-            </ul>
-        </div>
     </div>
     <div class="col-md-4 mt-5">
         おすすめ　◎
