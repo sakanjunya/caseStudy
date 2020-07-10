@@ -21,12 +21,9 @@
 <div id="container">
     @include('header.loginHeader')
     <div class="row w-100">
-        <iframe
-                allow="microphone;"
-                width="100%"
-                height="600"
-                src="https://console.dialogflow.com/api-client/demo/embedded/dadfbda6-4f66-4201-88b0-cdaec7ac74b3">
-        </iframe>
+        <div>
+            
+        </div>
 
     </div>
 </div>

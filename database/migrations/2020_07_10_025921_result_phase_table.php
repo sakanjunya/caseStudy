@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SuitableJobTable extends Migration
+class ResultPhaseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,12 @@ class SuitableJobTable extends Migration
     public function up()
     {
         //
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('result_phase', function (Blueprint $table) {
             $table->id();
-            $table->integer('job_name');
-            $table->integer('reasons');
             $table->string('type');
+            $table->string('reasons_student');
+            $table->string('reasons_teacher');
+            $table->string('result_name');
         });
     }
 

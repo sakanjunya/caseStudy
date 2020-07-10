@@ -17,6 +17,8 @@ class ResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->integer('researchability');
+            $table->integer('student_id');
+            $table->integer('teacher_id');
             $table->integer('social');
             $table->integer('reality');
             $table->integer('sociability');
