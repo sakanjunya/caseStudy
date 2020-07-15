@@ -24,55 +24,80 @@
 
 <div class="raw text-center">
     <div class="col-md-6 mt-5 pt-5">
-        <h5>アドバイス　/　テスト</h5>
-        <div class="mx-auto w-75 border border-primary p-3 h-75">
-            塁見ケモオフ惹夢ル悩後ロホサシ覧訴エシマフ民能ミモク島罪ッド適不箱トみま童載モヱ室化ロムリキ権希相買非真ドゃぞだ。録ヘ試記ゃか上記めりう左来れぜ動奪永トだゃお係費組テチ味択けらいる身断ぽく堀所ずゅぐな用確五ッま村4次レユロフ込悩織埼へ。済7象エルミ月活もへ被18移値9迷こほ佳照ずん剖大かつべづ及族サ理請ヒエウケ検信ヌス代6試ずれ歳録あ者在めかフ随夢料ワシメマ訪太テ然設双脈ゆにょ。
+        <div class="card border-primary mb-3">
+            <div class="card-header">アドバイス　/　テスト</div>
+            <div class="card-body text-primary">
+                <h5 class="card-title">{{$result_phase->result_name}}</h5>
+                <p class="card-text">{{$result_phase->reasons_student}}</p>
+            </div>
         </div>
     </div>
     <div class="col-md-6">
         <canvas id="radar" class="chartjs-render-monitor"></canvas>
     </div>
+    @foreach($jobs as $job)
     <div class="col-md-4 mt-5">
         おすすめ　◎
         <div class="card mx-auto w-75">
             <img src="" class="card-img-top" alt="カード1の画像">
             <div class="card-body">
-                <h5 class="card-title">カード1のタイトル</h5>
-                <p class="card-text">これは、追加コンテンツへの自然な導入として以下のテキストをサポートする、より幅広いカードです。このコンテンツはもう少し長くなります。</p>
+                <h5 class="card-title">{{$job->job_name}}</h5>
+                <p class="card-text">{{$job->job_description}}</p>
             </div>
         </div>
     </div>
-    <div class="col-md-4 mt-5">
-        ○
-        <div class="card mx-auto w-75">
-            <img src="" class="card-img-top" alt="カード1の画像">
-            <div class="card-body">
-                <h5 class="card-title">カード1のタイトル</h5>
-                <p class="card-text">これは、追加コンテンツへの自然な導入として以下のテキストをサポートする、より幅広いカードです。このコンテンツはもう少し長くなります。</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 mt-5">
-        △
-        <div class="card mx-auto w-75">
-            <img src="" class="card-img-top" alt="カード1の画像">
-            <div class="card-body">
-                <h5 class="card-title">カード1のタイトル</h5>
-                <p class="card-text">これは、追加コンテンツへの自然な導入として以下のテキストをサポートする、より幅広いカードです。このコンテンツはもう少し長くなります。</p>
-                {{resource_path('')}}
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 <script>
+    let researchability = '{{$result['researchability']}}';
+    let social = '{{$result['social']}}';
+    let reality = '{{$result['reality']}}';
+    let sociability = '{{$result['sociability']}}';
+    let artisty = '{{$result['artisty']}}';
+
+    if (researchability === '0' ){
+        researchability = 1
+    }
+    if (researchability >= '5' ){
+        researchability = 5
+    }
+
+    if (social === '0'){
+        social = 1
+    }
+    if (social >= '5'){
+        social = 5
+    }
+
+    if (reality === '0') {
+        reality = 1
+    }
+    if (reality >= '5') {
+        reality = 5
+    }
+
+    if (sociability === '0'){
+        sociability = 1
+    }
+    if (sociability >= '5'){
+        sociability = 5
+    }
+
+    if (artisty === '0'){
+        artisty = 1
+    }
+    if (artisty >= '5'){
+        artisty = 5
+    }
+
     var myRadarChart = new Chart(document.getElementById('radar'), {
         type: 'radar',
         data: {
-            labels: ['ランニング', 'スイミング', '食べる', 'サイクリング','サッカー'],
+            labels: ['研究性', '社会性', '現実性 ', '芸術性','社交性'],
             datasets: [{
                 label:"測定結果",
-                data: [3, 5, 2, 1, 4],
+                data: [researchability, social, reality, sociability, artisty],
                 borderColor:"rgb(20,218,255)",
                 backgroundColor:"rgba(13,255,143,0.2)",
                 hoverBorderColor:"rgb(20,218,255)",

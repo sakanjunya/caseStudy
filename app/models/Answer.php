@@ -4,13 +4,12 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jobs extends Model
+class Answer extends Model
 {
     //
     protected $fillable =[
         'id',
-        'type',
-        'job_name',
-        'job_description',
+        'text',
+        'question_id',
     ];
 }

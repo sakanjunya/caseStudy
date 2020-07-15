@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ResultPhaseTable extends Migration
+class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class ResultPhaseTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('result_phase', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->string('reasons_student');
-            $table->string('reasons_teacher');
-            $table->string('result_name');
+            $table->string('text');
+            $table->integer('question_id');
         });
     }
 
@@ -30,6 +27,6 @@ class ResultPhaseTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('answers');
     }
 }

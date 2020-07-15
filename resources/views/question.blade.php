@@ -22,148 +22,23 @@
 
     <div class="row w-100">
 
-        <div id="q1" class="col-md-8">
-            <div>
-                <h1 class="text-center">質問１</h1>
+        @foreach($questions as $question)
+            <div id="q{{$question->id}}" class="col-12 w-100">
+                <div>
+                    <h1 class="text-center">{{$question->text}}</h1>
+                </div>
+                <div class="btnBox">
+                    @foreach($answers as $answer)
+                        @if($answer->question_id === $question->id)
+                            <button type="button"  class="button ml-1" onclick="add('{{Str::limit($answer->text,1,'')}}')">{{$answer->text}}</button>
+                        @endif
+                    @endforeach
+                </div>
             </div>
-            <div>
-                <p class="text-center">難しい問題を解く時には？</p>
-                <button type="button" onclick="add('a')">じっくり考える</button>
-                <button type="button" onclick="add('b')">友達と問題を共有する。</button>
-                <button type="button" onclick="add('c')">解答を見る。</button>
-                <button type="button" onclick="add('d')">直感で解く。</button>
-                <button type="button" onclick="add('e')">友達に聞く。</button>
-            </div>
-        </div>
+        @endforeach
 
-        <div id="q2">
-            <div>
-                <h1>質問２</h1>
-            </div>
-            <div>
-                <p>普段どのようなニュースに興味がありますか？</p>
-                <button type="button" onclick="add('a')">新しい発見など科学のニュース。</button>
-                <button type="button" onclick="add('b')">時事問題などのニュース。</button>
-                <button type="button" onclick="add('c')">昨日今日など直近のニュース。</button>
-                <button type="button" onclick="add('d')">新しい映画や音楽などアーティストの番宣。</button>
-                <button type="button" onclick="add('e')">芸能会など華やかなニュース。</button>
-            </div>
-        </div>
-
-        <div id="q3">
-            <div>
-                <h1>質問３</h1>
-            </div>
-            <div>
-                <p>何かを計画をするときにどのように考えますか？</p>
-                <button type="button" onclick="add('a')">じっくり道筋を考えて計画する。</button>
-                <button type="button" onclick="add('b')">メンバーや友達など周りの人と相談して決める。</button>
-                <button type="button" onclick="add('c')">今出来そうな範疇で物事を考える。</button>
-                <button type="button" onclick="add('d')">やりたいことを最優先で考える。</button>
-                <button type="button" onclick="add('e')">中の良い人や頼れる人に決めて貰う。</button>
-            </div>
-        </div>
-
-        <div id="q4">
-            <div>
-                <h1>質問４</h1>
-            </div>
-            <div>
-                <p>普段どのような本を読みますか？</p>
-                <button type="button" onclick="add('a')">科学や専門書。</button>
-                <button type="button" onclick="add('b')">ビジネスや経営。</button>
-                <button type="button" onclick="add('c')">実用本。</button>
-                <button type="button" onclick="add('d')">漫画や雑誌。</button>
-                <button type="button" onclick="add('e')">今流行の小説など。</button>
-            </div>
-        </div>
-
-        <div id="q5">
-            <div>
-                <h1>質問５</h1>
-            </div>
-            <div>
-                <p>意見が対立した時にどうしますか？</p>
-                <button type="button" onclick="add('a')">相手が納得するまで自分の意見を述べる。</button>
-                <button type="button" onclick="add('b')">相手の意見との妥協点を探る。</button>
-                <button type="button" onclick="add('c')">納得はしないがその場では意見を合わせる。</button>
-                <button type="button" onclick="add('d')">相手と自分は違うと割り切って考える。</button>
-                <button type="button" onclick="add('e')">相手の意見を尊重する。</button>
-            </div>
-        </div>
-
-        <div id="q6">
-            <div>
-                <h1>質問６</h1>
-            </div>
-            <div>
-                <p>人と議論したり、物事を説明する時に気をつけることは？</p>
-                <button type="button" onclick="add('a')">論理性。</button>
-                <button type="button" onclick="add('b')">お互いに納得すること。</button>
-                <button type="button" onclick="add('c')">なるべく穏便に済むようにやる。</button>
-                <button type="button" onclick="add('d')">自分の考えや気持ち。</button>
-                <button type="button" onclick="add('e')">相手との関係性。</button>
-            </div>
-        </div>
-
-        <div id="q7">
-            <div>
-                <h1>質問７</h1>
-            </div>
-            <div>
-                <p>落ち込んでいる人を助ける時にすることは？</p>
-                <button type="button" onclick="add('a')">落ち込んでいる原因を探る。</button>
-                <button type="button" onclick="add('b')">励ましてあげる。</button>
-                <button type="button" onclick="add('c')">自分でどうしようもないと諦める。</button>
-                <button type="button" onclick="add('d')">音楽など芸樹的な物をすすめる。</button>
-                <button type="button" onclick="add('e')">話を聞いてあげる。</button>
-            </div>
-        </div>
-
-        <div id="q8">
-            <div>
-                <h1>質問８</h1>
-            </div>
-            <div>
-                <p>トラブルが起こった時、はじめに何をしますか？</p>
-                <button type="button" onclick="add('a')">原因を考える。</button>
-                <button type="button" onclick="add('b')">仲間と一緒に対処する。</button>
-                <button type="button" onclick="add('c')">まずは落ち着く。</button>
-                <button type="button" onclick="add('d')">直感的に解決に動く。</button>
-                <button type="button" onclick="add('e')">助けを求める。</button>
-            </div>
-        </div>
-
-        <div id="q9">
-            <div>
-                <h1>質問９</h1>
-            </div>
-            <div>
-                <p>達成感を得る瞬間はなんですか？</p>
-                <button type="button" onclick="add('a')">難しい難問を解いた時。</button>
-                <button type="button" onclick="add('b')">誰かに感謝された時。</button>
-                <button type="button" onclick="add('c')">楽に目標をクリアできた時。</button>
-                <button type="button" onclick="add('d')">自分自身で納得のいく結果が出た時。</button>
-                <button type="button" onclick="add('e')">みんなで目標を成し遂げた時。</button>
-            </div>
-        </div>
-
-        <div id="q10">
-            <div>
-                <h1>質問10</h1>
-            </div>
-            <div>
-                <p>どんな人物にが好き？</p>
-                <button type="button" onclick="add('a')">知的な人。</button>
-                <button type="button" onclick="add('b')">仲間を大事にする人。</button>
-                <button type="button" onclick="add('c')">落ち着いた現実主義者。</button>
-                <button type="button" onclick="add('d')">アーティスト。</button>
-                <button type="button" onclick="add('e')">明るく社交的な人。</button>
-            </div>
-        </div>
-
-        <div id="q11">
-            <button type="button" onclick="goreturn()">結果を表示する</button>
+        <div id="q11" class="col-12">
+            <p class="text-center"><button class="button mx-auto" type="button" onclick="goreturn()">結果を表示する</button></p>
         </div>
     </div>
 
@@ -189,19 +64,19 @@
     //ボタンを押された際のtype追加処理
     function add(type){
         switch(type){
-            case 'a':
+            case 'A':
                 a++
                 break
-            case 'b':
+            case 'B':
                 b++;
                 break
-            case 'c':
+            case 'C':
                 c++
                 break
-            case 'd':
+            case 'D':
                 d++
                 break
-            case 'e':
+            case 'E':
                 e++
             break
         }
@@ -209,7 +84,7 @@
     //laravelに渡す処理を書く
 
     function goreturn(){
-        window.location.href = '../studentDetail/'+user_id+'?a='+a+'&b='+b+'&c='+c+'&d='+d+'&e='+e;
+        window.location.href = '../studentDetailAdd/'+user_id+'?a='+a+'&b='+b+'&c='+c+'&d='+d+'&e='+e;
     }
 </script>
 </body>

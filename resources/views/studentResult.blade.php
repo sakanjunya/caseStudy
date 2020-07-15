@@ -50,20 +50,16 @@
             <th>結果</th>
             <th>日付</th>
         </tr>
-        @for($i = 1 ;$i <= 3; $i++)
+        @foreach($results as $result)
             <tr>
                 <td>
-                    <a href="../studentDetail" target="_blank">
-                        @if($i % 7 == 0)
-                            しなかった
-                        @else
-                            分類結果{{$i}}
-                        @endif
+                    <a href="../studentDetail/{{$result->id}}">
+                        テスト結果{{$loop->iteration}}
                     </a>
                 </td>
-                <td>2020/2/2</td>
+                <td>{{$result->update_at}}</td>
             </tr>
-        @endfor
+        @endforeach
     </table>
 </div>
 </body>
