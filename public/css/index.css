@@ -31,21 +31,21 @@
 }
 #content1Img{
     width: 100%;
-    background-image: url("../../../public/img/indexContent1BgImg.jpg");
+    background-image: url("../img/indexContent1BgImg.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 #content2Img{
     width: 100%;
-    background-image: url("../../../public/img/indexContent2BgImg.png");
+    background-image: url("../img/indexContent2BgImg.png");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 #headerBg{
     width: 100%;
-    background-image: url("../../../public/img/indexHeaderBgimg.jpg");
+    background-image: url("../img/indexHeaderBgimg.jpg");
     background-color:rgba(255,255,255,0.5);
     background-blend-mode:lighten;
     padding: 1%;

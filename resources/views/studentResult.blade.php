@@ -9,8 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/caseStudy/resources/views/css/studentResult.css">
-    <link rel="stylesheet" href="/caseStudy/resources/views/css/style.css">
+    <link rel="stylesheet" href="{{asset('css/student.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <title>case study</title>
 </head>

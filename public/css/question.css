@@ -1,0 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/*fieldset {*/
+/*    border: none;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    text-align: center;*/
+/*}*/
+/*h1 {*/
+/*    margin: 0;*/
+/*    line-height: 1.2;*/
+/*}*/
+/*p {*/
+/*    margin: 0 0 1.6rem;*/
+/*    padding-bottom: 0.2rem;*/
+/*    border-bottom: 1px solid #ddd;*/
+/*}*/
+.radio-inline__input {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+.radio-inline__label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 18px;
+    border-radius: 3px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
+    transition: all .2s;
+}
+.radio-inline__input:checked + .radio-inline__label {
+    background: #B54A4A;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0,0,0,.7);
+}
+.radio-inline__input:focus + .radio-inline__label {
+    outline-color: #4D90FE;
+    outline-offset: -2px;
+    outline-style: auto;
+    outline-width: 5px;
+}
+
+.btnBox{
+    margin-top: 10%;
+}
+.button {
+    width: 19.5%;
+    height: 10vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+.button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
