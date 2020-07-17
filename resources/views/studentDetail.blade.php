@@ -16,37 +16,99 @@
 {{--    <link rel="stylesheet" href="{{resource_path()}}/views/css/style.css">--}}
 
     <title>case study</title>
+
+    <style>
+        .raw {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .left {
+            width: 75%;
+            
+        }
+        .right {
+            width: 25%;
+            height: 100%
+        }
+        .nav {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
 <div>
     @include('header.teacherLoginHeader')
 </div>
+<?php
+    // var_dump($result);
 
+?>
 <div class="raw text-center">
-    <div class="col-md-6 mt-5 pt-5">
-        <div class="card border-primary mb-3">
-            <div class="card-header">アドバイス　/　テスト</div>
-            <div class="card-body text-primary">
-                <h5 class="card-title">{{$result_phase->result_name}}</h5>
-                <p class="card-text">{{$result_phase->reasons_student}}</p>
+    <div class="left">
+        <div class="col-md-6 mt-5 pt-5">
+            <div class="card border-primary mb-3">
+                <div class="card-header">アドバイス　/　テスト</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">{{$result_phase->result_name}}</h5>
+                    <p class="card-text">{{$result_phase->reasons_student}}</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <canvas id="radar" class="chartjs-render-monitor"></canvas>
-    </div>
-    @foreach($jobs as $job)
-    <div class="col-md-4 mt-5">
-        おすすめ　◎
-        <div class="card mx-auto w-75">
-            <img src="" class="card-img-top" alt="カード1の画像">
-            <div class="card-body">
-                <h5 class="card-title">{{$job->job_name}}</h5>
-                <p class="card-text">{{$job->job_description}}</p>
+        <div class="col-md-6">
+            <canvas id="radar" class="chartjs-render-monitor"></canvas>
+        </div>
+        @foreach($jobs as $job)
+        <div class="col-md-4 mt-5">
+            おすすめ　◎
+            <div class="card mx-auto w-75">
+                <img src="" class="card-img-top" alt="カード1の画像">
+                <div class="card-body">
+                    <h5 class="card-title">{{$job->job_name}}</h5>
+                    <p class="card-text">{{$job->job_description}}</p>
+                </div>
             </div>
         </div>
+        @endforeach
     </div>
-    @endforeach
+    <div class="right">
+        コメント
+            <ul class="nav nav-tabs" role="tablist">
+                <?php 
+                // $result['update_at'] で変数にしたらできなかったのでカウントアップで代用
+                 $count=0;
+                foreach($result as $value){ ?>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" id="<?php echo 'item'.$count.'-tab';?>" data-toggle="tab" href="<?php echo '#item'.$result['update_at'];?>" role="tab" aria-controls="<?php echo 'item'.$count;?>" aria-selected="false"><?php echo $result['update_at'];?></a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" id="<?php echo 'item'.$count.'-tab';?>" data-toggle="tab" href="<?php echo '#'.$count;?>" role="tab" aria-controls="<?php echo 'item'.$count;?>" aria-selected="false"><?php echo $result['update_at'];?></a>
+                </li>
+                <?php
+                $count++ ; }
+                ?>
+         
+            </ul>
+            <div class="tab-content">
+                <?php 
+                  $count=0;
+                  foreach($result as $valule){?>
+                <!-- <div class="tab-pane fade" id="<?php echo 'item'.$result['update_at'];?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$count.'-tab';?>">This is a text of <?php echo 'item'.$count;?>.</div> -->
+                <div class="tab-pane fade" id="<?php echo $count; ?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$count.'-tab';?>">This is a text of <?php echo 'item'.$count;?>.</div>
+                <?php 
+                  $count++;
+                  }
+                ?>
+            </div>
+            <div>
+            <div class="form-group">
+                <textarea id="textarea" class="form-control" placeholder="コメント入力して（#--#）"></textarea>
+            </div>
+            <button class="btn btn-primary btn-block">Block evel button</button>
+            </div> 
+            
+    </div>
+    
 </div>
 
 <script>
