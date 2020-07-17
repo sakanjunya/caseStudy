@@ -22,10 +22,11 @@ class topPage extends Controller
     public function insert(Request $request){
         $insert = $request->all();
         //パスワードが合っているかどうかを確認
-        if ($insert['password'] !== $insert['repassword']){
-            redirect('/')
+        if ($insert['password'] != $insert['repassword']){
+            return redirect('/')
                 ->with('flashMsg','パスワードの入力が間違っています');
         }
+
         //メールアドレスが使用されていた場合リダイレクト
         $checkEmail = User::where('mail',$insert['mail'])->first();
         if (isset($checkEmail)){
@@ -34,7 +35,7 @@ class topPage extends Controller
         }
 
         //パスワードのハッシュ化
-        $hashPass = $hash = Hash::make($insert['password']);
+        $hashPass = Hash::make($insert['password']);
         //ユーザ登録した後にIDを取得
         $id = User::insertGetId([
             'name'=>$insert['name'],

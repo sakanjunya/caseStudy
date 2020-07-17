@@ -29,7 +29,37 @@
     </nav>
     <h1 class="pb-5 pl-5">クラス選択</h1>
 </div>
-{{--    @foreach()--}}
+@if(session('flashMsg'))
+    <div class="modal show" id="showFlashMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form class="modal-content" action="createClassroom">
+                <div class="modal-header">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    <h5 class="modal-title" id="exampleModalLabel">クラス作成が成功しました</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="modalClose()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <label for="recipient-name" class="col-form-label"> クラスネーム:</label>
+                        <h4>{{session('flashMsg')}}</h4>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalClose()">閉じる</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function modalClose(){
+            $('#showFlashMsg').removeClass('show');
+            $('#showFlashMsg').addClass('hide');
+        }
+    </script>
+@endif
 <div class="card-deck w-100">
     {{$i = 1}}
     @if($i % 4 == 1 || $i == 1)
@@ -51,6 +81,5 @@
     </div>
 
 </div>
-{{--    @endforeach--}}
 </body>
 </html>

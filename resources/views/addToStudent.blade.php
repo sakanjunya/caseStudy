@@ -25,29 +25,23 @@
 <div class="bg-white">
     <nav aria-label="breadcrumb" class="bg-white">
         <ol class="breadcrumb bg-white">
-            <li class="breadcrumb-item"><a href="../teacherTop">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">クラス詳細</li>
+            <li class="breadcrumb-item"><a href="teacherTop">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="class/{{session('class_id')}}">クラス詳細</a></li>
+            <li class="breadcrumb-item active" aria-current="page">生徒追加</li>
         </ol>
-    </nav>
-    <h1 class="pb-5 pl-5">{{$className}}</h1>
-    <p class="text-center">
-        <button type="button" class="btn btn-primary rounded-circle p-0"  data-toggle="modal" data-target="#addStudent" style="width:4rem;height:4rem;font-size: large">＋</button>
-    </p>
+        <h1 class="pb-5 pl-5">クラス名：{{$classroom['class_name']}}に生徒を追加する</h1>    </nav>
 </div>
-<div class="m-5 row">
-{{--  生徒一覧を表示  --}}
-    @foreach($classmates as $classmate)
-        <div class="mb-3 col-md-3">
-            <a href="../studentResult/{{$classmate['id']}}" class="card bg-light shadow-sm">
-                <div class="card-header">{{$classmate['name']}}</div>
-                <div class="card-body">
-                    <h5 class="card-title">最終更新日：{{$classmate['update_at']}}</h5>
-                    <p class="card-text">詳細を確認する</p>
-                </div>
-            </a>
+<form action="insertToStudent" method="post">
+    @for($i = 1; $i <= (int)$num['students_num']; $i++)
+        @csrf
+        <div class="input-group mb-5 w-50 mx-auto">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">出席番号{{$i}}の名前を入力してください</span>
+            </div>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="students[]">
         </div>
-    @endforeach
-
-</div>
+    @endfor
+    <button type="submit" class="btn btn-primary">追加する</button>
+</form>
 </body>
 </html>

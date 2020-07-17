@@ -23,3 +23,6 @@ Route::match(['get', 'post'],'studentResult/{id}','StudentResult@index');
 Route::match(['get', 'post'],'studentDetailAdd/{id}','StudentDetail@insert');
 Route::match(['get', 'post'],'studentDetail/{id}','StudentDetail@index');
 Route::match(['get', 'post'],'checkDialog','CheckDialog@index');
+Route::match(['get', 'post'],'createClassroom','createClassroom@index');
+Route::match(['get', 'post'],'addToStudent','addToStudent@index');
+Route::match(['get', 'post'],'insertToStudent','addToStudent@insert');

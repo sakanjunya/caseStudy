@@ -15,10 +15,13 @@ class TeacherTop extends Controller
         //ID情報からユーザを取得
         $user = User::where('id',$id)->first();
 
+        $request->session()->put('school_id',$user->school_id);
+
         //クラス情報を取得、教師名をLEFT JOIN して取得
         $classrooms = Classroom::leftJoin('users', 'users.id', '=', 'classrooms.user_id')
             ->select('users.name', 'classrooms.*')
             ->where('classrooms.school_id',$user['school_id'])
+            ->orderBy('classrooms.class_name', 'asc')
             ->get();
 
         return view('teacherTop')
