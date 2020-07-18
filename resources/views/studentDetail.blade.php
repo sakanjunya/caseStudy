@@ -86,10 +86,10 @@
     </div>
     <div class="right col-4">
         コメント
-            <ul class="nav mx-auto nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
+            <ul class="nav w-100 nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
                  @foreach($all_result as $value) 
                     @if($value['student_id'] == $result['student_id'])
-                <li class="nav-item border-bottom">
+                <li class="nav-item  border-bottom">
                     <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value->update_at}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
                 </li>
                     @endif
