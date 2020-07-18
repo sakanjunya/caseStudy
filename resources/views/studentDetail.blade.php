@@ -22,13 +22,15 @@
         flex-wrap: nowrap;
     }
     .left {
+        height: 100vh;
         width: 75%;
         display: flex;
         flex-wrap: wrap;
+        overflow: hidden;
     }
     .right {
+        height: 80vh;
         width: 25%;
-        height: 100%;
     }
     .flex-box{
         display: flex;
@@ -43,21 +45,20 @@
     .nav-item {
         width: 100%;
     }
+    ul{
+        overflow: hidden;
+    }
+    textarea{
+     display:block;
+
+    }
+
     </style>
 </head>
 <body>
 <div>
     @include('header.teacherLoginHeader')
 </div>
-<?php
-    // var_dump($all_result);
-    // foreach($all_result as $value){
-        // if($value['student_id'] == $result['student_id']){
-            // echo $value->update_at;
-        // }
-    // }
-    // echo var_dump($value);
-?>
 <div class="raw text-center">
     <div class="left">
         <div class="col-md-6 mt-5 pt-5">
@@ -72,26 +73,29 @@
         <div class="col-md-6">
             <canvas id="radar" class="chartjs-render-monitor"></canvas>
         </div>
-            @foreach($jobs as $job)
-            <div class="col-md-4 mt-5">
+        <div class="row">
+        @foreach($jobs as $job)
+            <div class="col-md-12 mt-1">
                 おすすめ　◎
-                <div class="card mx-auto w-75">
+                <div class="card mx-auto w-75 "style="height: 15rem;">
                     <img src="" class="card-img-top" alt="カード1の画像">
-                    <div class="card-body">
+                    <div class="card-body" >
                         <h5 class="card-title">{{$job->job_name}}</h5>
                         <p class="card-text">{{$job->job_description}}</p>
                     </div>
                 </div>
             </div>
             @endforeach
+        </div>
+            
     </div>
-    <div class="right">
+    <div class="right ">
         コメント
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs shadow-sm p-3 mb-5 bg-white rounded" role="tablist">
                  @foreach($all_result as $value) 
                     @if($value['student_id'] == $result['student_id'])
-                <li class="nav-item">
-                    <a class="nav-link" id="<?php echo 'item'.$loop->iteration.'-tab';?>" data-toggle="tab" href="<?php echo '#'.$loop->iteration;?>" role="tab" aria-controls="<?php echo 'item'.$loop->iteration;?>" aria-selected="false"><?php echo $value->update_at;?></a>
+                <li class="nav-item ">
+                    <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value->update_at}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
                 </li>
                     @endif
                  @endforeach
@@ -99,7 +103,7 @@
             <div class="tab-content">
                   @foreach($all_result as $value)
                     @if($value['student_id'] == $result['student_id'])
-                  <div class="tab-pane fade" id="<?php echo $loop->iteration; ?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$loop->iteration.'-tab';?>">This is a text of <?php echo $value->update_at;?>.</div>
+                  <div class="tab-pane fade" id="{{ $loop->iteration }}" role="tabpanel" aria-labelledby="{{ 'item'.$loop->iteration.'-tab' }}">This is a text of {{ $value->update_at}}</div>
                     @endif
                   @endforeach
                 <div class="form-group">
