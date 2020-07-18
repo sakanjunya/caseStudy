@@ -11,9 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <link rel="stylesheet" href="{{asset('css/studentResult.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-{{--    <link rel="stylesheet" href="{{resource_path()}}/views/css/style.css">--}}
 
     <title>case study</title>
 </head>
