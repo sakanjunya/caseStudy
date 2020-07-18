@@ -11,29 +11,38 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <link rel="stylesheet" href="{{asset('css/studentResult.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/studentResult.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-{{--    <link rel="stylesheet" href="{{resource_path()}}/views/css/style.css">--}}
+{{--<link rel="stylesheet" href="{{resource_path()}}/views/css/style.css">--}}
 
     <title>case study</title>
-
     <style>
-        .raw {
-            display: flex;
-            flex-wrap: nowrap;
-        }
-        .left {
-            width: 75%;
-            
-        }
-        .right {
-            width: 25%;
-            height: 100%
-        }
-        .nav {
-            display: flex;
-            flex-direction: column;
-        }
+    .raw {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .left {
+        width: 75%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .right {
+        width: 25%;
+        height: 100%;
+    }
+    .flex-box{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .nav {
+        height: 600px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-item {
+        width: 100%;
+    }
     </style>
 </head>
 <body>
@@ -42,18 +51,12 @@
 </div>
 <?php
     // var_dump($all_result);
-    
-    foreach($all_result as $value){
-
-        if($value['student_id'] == $result['student_id']){
-      
+    // foreach($all_result as $value){
+        // if($value['student_id'] == $result['student_id']){
             // echo $value->update_at;
-        }
-       
-    }
+        // }
+    // }
     // echo var_dump($value);
- 
-
 ?>
 <div class="raw text-center">
     <div class="left">
@@ -69,57 +72,41 @@
         <div class="col-md-6">
             <canvas id="radar" class="chartjs-render-monitor"></canvas>
         </div>
-        @foreach($jobs as $job)
-        <div class="col-md-4 mt-5">
-            おすすめ　◎
-            <div class="card mx-auto w-75">
-                <img src="" class="card-img-top" alt="カード1の画像">
-                <div class="card-body">
-                    <h5 class="card-title">{{$job->job_name}}</h5>
-                    <p class="card-text">{{$job->job_description}}</p>
+            @foreach($jobs as $job)
+            <div class="col-md-4 mt-5">
+                おすすめ　◎
+                <div class="card mx-auto w-75">
+                    <img src="" class="card-img-top" alt="カード1の画像">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$job->job_name}}</h5>
+                        <p class="card-text">{{$job->job_description}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        @endforeach
+            @endforeach
     </div>
     <div class="right">
         コメント
             <ul class="nav nav-tabs" role="tablist">
-                <?php 
-                // $result['update_at'] で変数にしたらできなかったのでカウントアップで代用
-                 $count=0;
-                foreach($all_result as $value){ 
-                    if($value['student_id'] == $result['student_id']){
-                    ?>
+                 @foreach($all_result as $value) 
+                    @if($value['student_id'] == $result['student_id'])
                 <li class="nav-item">
-                    <a class="nav-link" id="<?php echo 'item'.$count.'-tab';?>" data-toggle="tab" href="<?php echo '#'.$count;?>" role="tab" aria-controls="<?php echo 'item'.$count;?>" aria-selected="false"><?php echo $value->update_at;?></a>
+                    <a class="nav-link" id="<?php echo 'item'.$loop->iteration.'-tab';?>" data-toggle="tab" href="<?php echo '#'.$loop->iteration;?>" role="tab" aria-controls="<?php echo 'item'.$loop->iteration;?>" aria-selected="false"><?php echo $value->update_at;?></a>
                 </li>
-                <?php
-                     $count++ ; 
-                    }
-                }
-                ?>
-         
+                    @endif
+                 @endforeach
             </ul>
             <div class="tab-content">
-                <?php 
-                  $count=0;
-                  foreach($all_result as $value){
-                    if($value['student_id'] == $result['student_id']){?>
-               <div class="tab-pane fade" id="<?php echo $count; ?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$count.'-tab';?>">This is a text of <?php echo $value->update_at;?>.</div>
-                <?php 
-                      $count++;
-                    }
-                  }
-                ?>
+                  @foreach($all_result as $value)
+                    @if($value['student_id'] == $result['student_id'])
+                  <div class="tab-pane fade" id="<?php echo $loop->iteration; ?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$loop->iteration.'-tab';?>">This is a text of <?php echo $value->update_at;?>.</div>
+                    @endif
+                  @endforeach
+                <div class="form-group">
+                  <textarea id="textarea" rows="5" cols="10"class="form-control" placeholder="コメント入力"></textarea>
+                </div>
+                 <button class="btn btn-primary btn-block">送信</button>
             </div>
-            <div>
-            <div class="form-group">
-                <textarea id="textarea" class="form-control" placeholder="コメント入力して（#--#）"></textarea>
-            </div>
-            <button class="btn btn-primary btn-block">Block evel button</button>
-            </div> 
-            
     </div>
     
 </div>
