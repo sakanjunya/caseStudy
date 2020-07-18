@@ -17,10 +17,7 @@
 
     <title>case study</title>
     <style>
-    .raw {
-        display: flex;
-        flex-wrap: nowrap;
-    }
+ 
     .left {
         height: 100vh;
         width: 75%;
@@ -59,8 +56,8 @@
 <div>
     @include('header.teacherLoginHeader')
 </div>
-<div class="raw text-center">
-    <div class="left">
+<div class="row text-center">
+    <div class="left col-8">
         <div class="col-md-6 mt-5 pt-5">
             <div class="card border-primary mb-3">
                 <div class="card-header">アドバイス　/　テスト</div>
@@ -73,7 +70,6 @@
         <div class="col-md-6">
             <canvas id="radar" class="chartjs-render-monitor"></canvas>
         </div>
-        
             @foreach($jobs as $job)
             <div class="col-md-12 mt-1">
                 おすすめ　◎
@@ -88,9 +84,9 @@
             @endforeach
         
     </div>
-    <div class="right ">
+    <div class="right col-4">
         コメント
-            <ul class="nav nav-tabs shadow-sm p-3 mb-5 bg-white rounded" role="tablist">
+            <ul class="nav mx-auto nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
                  @foreach($all_result as $value) 
                     @if($value['student_id'] == $result['student_id'])
                 <li class="nav-item border-bottom">
