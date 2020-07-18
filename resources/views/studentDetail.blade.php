@@ -73,8 +73,8 @@
         <div class="col-md-6">
             <canvas id="radar" class="chartjs-render-monitor"></canvas>
         </div>
-        <div class="row">
-        @foreach($jobs as $job)
+        
+            @foreach($jobs as $job)
             <div class="col-md-12 mt-1">
                 おすすめ　◎
                 <div class="card mx-auto w-75 "style="height: 15rem;">
@@ -86,15 +86,14 @@
                 </div>
             </div>
             @endforeach
-        </div>
-            
+        
     </div>
     <div class="right ">
         コメント
             <ul class="nav nav-tabs shadow-sm p-3 mb-5 bg-white rounded" role="tablist">
                  @foreach($all_result as $value) 
                     @if($value['student_id'] == $result['student_id'])
-                <li class="nav-item ">
+                <li class="nav-item border-bottom">
                     <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value->update_at}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
                 </li>
                     @endif
