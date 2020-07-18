@@ -14,6 +14,7 @@ class studentDetail extends Controller
     public function index($id,Request $request){
 
         $result = Result::where('id',$id)->first();
+        $all_result = Result::get();// 全件
         $categories = [
             'a'=>$result->researchability,
             'b'=>$result->social,
@@ -41,7 +42,8 @@ class studentDetail extends Controller
         return view('studentDetail')
             ->with('result',$result)
             ->with('result_phase',$result_phase)
-            ->with('jobs',$jobs);
+            ->with('jobs',$jobs)
+            ->with('all_result',$all_result);
     }
 
     public function insert($id,Request $request){

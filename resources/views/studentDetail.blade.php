@@ -41,7 +41,18 @@
     @include('header.teacherLoginHeader')
 </div>
 <?php
-    // var_dump($result);
+    // var_dump($all_result);
+    
+    foreach($all_result as $value){
+
+        if($value['student_id'] == $result['student_id']){
+      
+            // echo $value->update_at;
+        }
+       
+    }
+    // echo var_dump($value);
+ 
 
 ?>
 <div class="raw text-center">
@@ -77,26 +88,28 @@
                 <?php 
                 // $result['update_at'] で変数にしたらできなかったのでカウントアップで代用
                  $count=0;
-                foreach($result as $value){ ?>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" id="<?php echo 'item'.$count.'-tab';?>" data-toggle="tab" href="<?php echo '#item'.$result['update_at'];?>" role="tab" aria-controls="<?php echo 'item'.$count;?>" aria-selected="false"><?php echo $result['update_at'];?></a>
-                </li> -->
+                foreach($all_result as $value){ 
+                    if($value['student_id'] == $result['student_id']){
+                    ?>
                 <li class="nav-item">
-                    <a class="nav-link" id="<?php echo 'item'.$count.'-tab';?>" data-toggle="tab" href="<?php echo '#'.$count;?>" role="tab" aria-controls="<?php echo 'item'.$count;?>" aria-selected="false"><?php echo $result['update_at'];?></a>
+                    <a class="nav-link" id="<?php echo 'item'.$count.'-tab';?>" data-toggle="tab" href="<?php echo '#'.$count;?>" role="tab" aria-controls="<?php echo 'item'.$count;?>" aria-selected="false"><?php echo $value->update_at;?></a>
                 </li>
                 <?php
-                $count++ ; }
+                     $count++ ; 
+                    }
+                }
                 ?>
          
             </ul>
             <div class="tab-content">
                 <?php 
                   $count=0;
-                  foreach($result as $valule){?>
-                <!-- <div class="tab-pane fade" id="<?php echo 'item'.$result['update_at'];?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$count.'-tab';?>">This is a text of <?php echo 'item'.$count;?>.</div> -->
-                <div class="tab-pane fade" id="<?php echo $count; ?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$count.'-tab';?>">This is a text of <?php echo 'item'.$count;?>.</div>
+                  foreach($all_result as $value){
+                    if($value['student_id'] == $result['student_id']){?>
+               <div class="tab-pane fade" id="<?php echo $count; ?>" role="tabpanel" aria-labelledby="<?php echo 'item'.$count.'-tab';?>">This is a text of <?php echo $value->update_at;?>.</div>
                 <?php 
-                  $count++;
+                      $count++;
+                    }
                   }
                 ?>
             </div>
