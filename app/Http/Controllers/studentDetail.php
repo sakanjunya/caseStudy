@@ -14,6 +14,7 @@ class studentDetail extends Controller
     public function index($id,Request $request){
 
         $result = Result::where('id',$id)->first();
+        $select_result = Result::where('student_id',$id)->get();
         $all_result = Result::get();// 全件
         $categories = [
             'a'=>$result->researchability,
@@ -22,7 +23,7 @@ class studentDetail extends Controller
             'd'=>$result->artisty,
             'e'=>$result->sociability,
         ];
-
+        
         arsort($categories);
         $personalities = '';
         $i =0;
@@ -33,17 +34,16 @@ class studentDetail extends Controller
             $personalities = $personalities.$key;
             $i++;
         }
-
+        
         $result_phase = ResultPhase::where('type',$personalities)->first();
         $jobs = Jobs::where('type',$personalities)->get();
-
         
-
         return view('studentDetail')
             ->with('result',$result)
             ->with('result_phase',$result_phase)
             ->with('jobs',$jobs)
-            ->with('all_result',$all_result);
+            ->with('all_result',$all_result)
+            ->with('select_result',$select_result);
     }
 
     public function insert($id,Request $request){

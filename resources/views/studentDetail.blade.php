@@ -56,55 +56,76 @@
 <div>
     @include('header.teacherLoginHeader')
 </div>
+
 <div class="row text-center">
-    <div class="left col-8">
-        <div class="col-md-6 mt-5 pt-5">
-            <div class="card border-primary mb-3">
-                <div class="card-header">アドバイス　/　テスト</div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">{{$result_phase->result_name}}</h5>
-                    <p class="card-text">{{$result_phase->reasons_student}}</p>
-                </div>
+
+<!-- アドバイス -->
+    <div class="left col-8 tab-content">
+    <?php
+     foreach($select_result as $array){
+        echo $array.'<br>';
+    }
+?>
+    @foreach($all_result as $value)
+        @if($value['student_id'] == $result['student_id']) 
+            <div class="tab-pane fade" id="item{{ substr($value['update_at'],0,10) }}" role="tabpanel" aria-labelledby="item{{ substr($value['update_at'],0,10) }}-tab">
+                <div class="col-md-6 mt-5 pt-5">
+                            <div class="card border-primary mb-3">
+                                <div class="card-header">アドバイス　/　テスト</div>
+                                <div class="card-body text-primary">
+                                    <h5 class="card-title">{{$result_phase->result_name}}</h5>
+                                    <p class="card-text">{{$result_phase->reasons_student}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- パラメータ -->
+                        <div class="col-md-6">
+                            <canvas id="radar" class="chartjs-render-monitor"></canvas>
+                        </div>
+                        <!-- おすすめ job-->
+                            @foreach($jobs as $job)
+                            <div class="col-md-12 mt-1">
+                                おすすめ　◎
+                                <div class="card mx-auto w-75 "style="height: 15rem;">
+                                    <img src="" class="card-img-top" alt="カード1の画像">
+                                    <div class="card-body" >
+                                        <h5 class="card-title">{{$job->job_name}}</h5>
+                                        <p class="card-text">{{$job->job_description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
             </div>
-        </div>
-        <div class="col-md-6">
-            <canvas id="radar" class="chartjs-render-monitor"></canvas>
-        </div>
-            @foreach($jobs as $job)
-            <div class="col-md-12 mt-1">
-                おすすめ　◎
-                <div class="card mx-auto w-75 "style="height: 15rem;">
-                    <img src="" class="card-img-top" alt="カード1の画像">
-                    <div class="card-body" >
-                        <h5 class="card-title">{{$job->job_name}}</h5>
-                        <p class="card-text">{{$job->job_description}}</p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        
+         @endif
+    @endforeach
+            
     </div>
-    <div class="right col-4">
+
+    <div class="right col-4"> 
         コメント
             <ul class="nav w-100 nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
                  @foreach($all_result as $value) 
                     @if($value['student_id'] == $result['student_id'])
-                <li class="nav-item  border-bottom">
+                <!-- <li class="nav-item  border-bottom">
                     <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value->update_at}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
+                </li> -->
+                  <li class="nav-item  border-bottom">
+                    <a class="nav-link <?php echo ($loop->first)? 'active':''; ?>" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="<?php echo ($loop->first)? 'true':'false'; ?>">{{ $value->update_at}}辻亮太ようやく就活始める予定。</a>
                 </li>
                     @endif
                  @endforeach
             </ul>
-            <div class="tab-content">
+            <div class="tab-content"> 
                   @foreach($all_result as $value)
-                    @if($value['student_id'] == $result['student_id'])
-                  <div class="tab-pane fade" id="{{ $loop->iteration }}" role="tabpanel" aria-labelledby="{{ 'item'.$loop->iteration.'-tab' }}">This is a text of {{ $value->update_at}}</div>
+                    @if($value['student_id'] == $result['student_id']) 
+                  <div class="tab-pane fade " id="item{{ substr($value['update_at'],0,10)}}" role="tabpanel" aria-labelledby="item{{substr($value['update_at'],0,10)}}-tab">This is a text of {{ $value->update_at}}</div>
                     @endif
                   @endforeach
-                <div class="form-group">
-                  <textarea id="textarea" rows="5" cols="10"class="form-control" placeholder="コメント入力"></textarea>
-                </div>
-                 <button class="btn btn-primary btn-block">送信</button>
+                    <form action="commentAdd" class="form-group">
+                    @csrf 
+                        <textarea id="textarea" rows="5" cols="10"class="form-control" placeholder="コメント入力"></textarea>
+                    </form>
+                    <button class="btn btn-primary btn-block">送信</button>
             </div>
     </div>
     
