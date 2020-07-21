@@ -12,10 +12,13 @@ use Illuminate\Support\Arr;
 class studentDetail extends Controller
 {
     public function index($id,Request $request){
-        echo $id;
+        
         $result = Result::where('id',$id)->first();
-        $select_result = Result::where('id',$id)->get();
-        $all_result = Result::get();// 全件
+
+        $student_id = Result::where('id',$id)->value('student_id');
+        
+        $select_result = Result::where('student_id',$student_id)->get();
+
         $categories = [
             'a'=>$result->researchability,
             'b'=>$result->social,
@@ -42,7 +45,6 @@ class studentDetail extends Controller
             ->with('result',$result)
             ->with('result_phase',$result_phase)
             ->with('jobs',$jobs)
-            ->with('all_result',$all_result)
             ->with('select_result',$select_result);
     }
 

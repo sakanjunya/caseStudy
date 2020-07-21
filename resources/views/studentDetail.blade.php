@@ -62,13 +62,17 @@
     <div>
         @include('header.teacherLoginHeader')
     </div>
-
+<?php
+    // echo '<pre>'.var_dump($select_result).'</pre>';
+    // コメントタブ選択時にパラメータとアドバイスの切り替えができへん
+    // 画面が描画された時にパラメータとアドバイスが表示されない。（コメントクリックしたら反応する）
+    // コメントはデータベースに格納できてない。
+?>
     <div class="row text-center">
-
         <!-- アドバイス -->
         <div class="left col-8 tab-content">
-            @foreach($all_result as $value)
-            @if($value['student_id'] == $result['student_id'])
+   
+            @foreach($select_result as $value)
             <div class="tab-pane fade" id="item{{ substr($value['update_at'],0,10) }}" role="tabpanel" aria-labelledby="item{{ substr($value['update_at'],0,10) }}-tab">
                 <div class="col-md-6 mt-5 pt-5">
                     <div class="card border-primary mb-3">
@@ -99,7 +103,6 @@
                 @endforeach
 
             </div>
-            @endif
             @endforeach
 
         </div>
@@ -107,22 +110,18 @@
         <div class="right col-4">
             コメント
             <ul class="nav w-100 nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
-                @foreach($all_result as $value)
-                @if($value['student_id'] == $result['student_id'])
+                @foreach($select_result as $value)
                 <!-- <li class="nav-item  border-bottom">
                     <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value->update_at}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
                 </li> -->
                 <li class="nav-item  border-bottom">
-                    <a class="nav-link <?php echo ($loop->first) ? 'active' : ''; ?>" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="<?php echo ($loop->first) ? 'true' : 'false'; ?>">{{ $value->update_at}}辻亮太ようやく就活始める予定。</a>
+                    <a class="nav-link" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="<?php echo ($loop->first) ? 'true' : 'false'; ?>">{{ $value->update_at}}辻亮太ようやく就活始める予定。</a>
                 </li>
-                @endif
                 @endforeach
             </ul>
             <div class="tab-content">
-                @foreach($all_result as $value)
-                @if($value['student_id'] == $result['student_id'])
+                @foreach($select_result as $value)
                 <div class="tab-pane fade " id="item{{ substr($value['update_at'],0,10)}}" role="tabpanel" aria-labelledby="item{{substr($value['update_at'],0,10)}}-tab">This is a text of {{ $value->update_at}}</div>
-                @endif
                 @endforeach
                 <form action="commentAdd" class="form-group">
                     @csrf
@@ -135,7 +134,7 @@
     </div>
 
     <script>
-           let researchability = '{{$result['researchability']}}';
+    let researchability = '{{$result['researchability']}}';
     let social = '{{$result['social']}}';
     let reality = '{{$result['reality']}}';
     let sociability = '{{$result['sociability']}}';
@@ -170,6 +169,7 @@
     if (artisty >= '5'){
         artisty = 5
     }
+
     var myRadarChart = new Chart(document.getElementById('radar'), {
         type: 'radar',
         data: {
