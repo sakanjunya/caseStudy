@@ -12,9 +12,9 @@ use Illuminate\Support\Arr;
 class studentDetail extends Controller
 {
     public function index($id,Request $request){
-
+        echo $id;
         $result = Result::where('id',$id)->first();
-        $select_result = Result::where('student_id',$id)->get();
+        $select_result = Result::where('id',$id)->get();
         $all_result = Result::get();// 全件
         $categories = [
             'a'=>$result->researchability,
