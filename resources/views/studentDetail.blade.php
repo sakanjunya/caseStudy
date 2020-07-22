@@ -72,34 +72,116 @@
         <!-- アドバイス -->
         <div class="left col-8 tab-content">
 
-            @foreach($select_result as $value)
-            <div class="tab-pane fade" id="item{{ substr($value['update_at'],0,10) }}" role="tabpanel" aria-labelledby="item{{ substr($value['update_at'],0,10) }}-tab">
+            @foreach($results as $select_result)
+            <div class="tab-pane fade" id="item{{ substr($select_result['update_at'],0,10) }}" role="tabpanel" aria-labelledby="item{{ substr($select_result['update_at'],0,10) }}-tab">
                 <div class="col-md-6 mt-5 pt-5">
                     <div class="card border-primary mb-3">
                         <div class="card-header">アドバイス　/　テスト</div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">{{$result_phase->result_name}}</h5>
-                            <p class="card-text">{{$result_phase->reasons_student}}</p>
+                            <h5 class="card-title">{{$select_result['result_phase'][0]['result_name']}}</h5>
+                            <p class="card-text">{{$select_result['result_phase'][0]['reasons_teacher']}}</p>
                         </div>
                     </div>
                 </div>
                 <!-- パラメータ -->
                 <div class="col-md-6">
-                    <canvas id="radar" class="chartjs-render-monitor"></canvas>
+                    <canvas id="radar{{$loop->iteration}}" class="chartjs-render-monitor"></canvas>
+                    <script>
+                        $(document).ready(function(){
+
+                            let researchability = '{{$select_result['researchability']}}';
+                            let social = '{{$select_result['social']}}';
+                            let reality = '{{$select_result['reality']}}';
+                            let sociability = '{{$select_result['sociability']}}';
+                            let artisty = '{{$select_result['artisty']}}';
+                            if (researchability === '0' ){
+                                researchability = 1
+                            }
+                            if (researchability >= '5' ){
+                                researchability = 5
+                            }
+                            if (social === '0'){
+                                social = 1
+                            }
+                            if (social >= '5'){
+                                social = 5
+                            }
+                            if (reality === '0') {
+                                reality = 1
+                            }
+                            if (reality >= '5') {
+                                reality = 5
+                            }
+                            if (sociability === '0'){
+                                sociability = 1
+                            }
+                            if (sociability >= '5'){
+                                sociability = 5
+                            }
+                            if (artisty === '0'){
+                                artisty = 1
+                            }
+                            if (artisty >= '5'){
+                                artisty = 5
+                            }
+
+                            let idNum = {{$loop->iteration}}
+                            console.log(idNum);
+                            let myRadarChart = new Chart(document.getElementById('radar' + idNum), {
+                                type: 'radar',
+                                data: {
+                                    labels: ['研究性', '社会性', '現実性 ', '芸術性','社交性'],
+                                    datasets: [{
+                                        label:"測定結果",
+                                        data: [researchability, social, reality, sociability, artisty],
+                                        borderColor:"rgb(20,218,255)",
+                                        backgroundColor:"rgba(13,255,143,0.2)",
+                                        hoverBorderColor:"rgb(20,218,255)",
+                                        pointBorderColor:[
+                                            "rgb(255,27,174)",
+                                            "rgb(255,177,34)",
+                                            "rgb(100,255,43)",
+                                            "rgb(41,204,255)",
+                                            "rgb(28,43,255)"
+                                        ]
+                                    }],
+                                },
+                                options: {
+                                    scale: {
+                                        angleLines: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            suggestedMin: 0,
+                                            suggestedMax: 5,
+                                        }
+                                    },
+                                    elements:
+                                        {
+                                            line:
+                                                {
+                                                    tension:0,
+                                                    borderWidth:2
+                                                }
+                                        }
+                                },
+                            });
+                        })
+                    </script>
                 </div>
 
                 <!-- おすすめ job-->
-                @foreach($jobs as $job)
-                <div class="col-md-12">
-                    <!-- おすすめ　◎ -->
-                    <div class="card mx-auto mt-5" style="height: 15rem; ">
-                        <img src="" class="card-img-top" alt="カード1の画像">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$job->job_name}}</h5>
-                            <p class="card-text">{{$job->job_description}}</p>
+                @foreach($select_result['jobs'] as $job)
+                    <div class="col-md-12">
+                        <!-- おすすめ　◎ -->
+                        <div class="card mx-auto mt-5" style="height: 15rem; ">
+                            <img src="" class="card-img-top" alt="カード1の画像">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$job['job_name']}}</h5>
+                                <p class="card-text">{{$job['job_description']}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
 
             </div>
@@ -110,20 +192,20 @@
         <div class="right col-4">
             コメント
             <ul class="nav w-100 nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
-                @foreach($select_result as $value)
-                <!-- <li class="nav-item  border-bottom">
-                    <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value->update_at}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
-                </li> -->
-                <li class="nav-item  border-bottom">
-                    <a class="nav-link" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="<?php echo ($loop->first) ? 'true' : 'false'; ?>">{{ $value->update_at}}辻亮太ようやく就活始める予定。</a>
-                </li>
+                @foreach($select_results as $value)
+                    <!-- <li class="nav-item  border-bottom">
+                    <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value['update_at']}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
+                    </li> -->
+                    <li class="nav-item  border-bottom">
+                        <a class="nav-link" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="<?php echo ($loop->first) ? 'true' : 'false'; ?>">{{ $value['update_at']}}辻亮太ようやく就活始める予定。</a>
+                    </li>
                 @endforeach
             </ul>
             <div class="tab-content">
-                @foreach($select_result as $value)
-                <div class="tab-pane fade " id="item{{ substr($value['update_at'],0,10)}}" role="tabpanel" aria-labelledby="item{{substr($value['update_at'],0,10)}}-tab">This is a text of {{ $value->update_at}}</div>
+                @foreach($select_results as $value)
+                <div class="tab-pane fade " id="item{{ substr($value['update_at'],0,10)}}" role="tabpanel" aria-labelledby="item{{substr($value['update_at'],0,10)}}-tab">This is a text of {{ $value['update_at']}}</div>
                 @endforeach
-                <form action="../commentAdd/{{$result->id}}" class="form-group" method="post">
+                <form action="../commentAdd/{{$result['id']}}" class="form-group" method="post">
                     @csrf
                     <textarea id="textarea" name="teacher_text" rows="5" cols="10" class="form-control" placeholder="コメント入力"></textarea>
                     <button class="btn btn-primary btn-block">送信</button>
@@ -133,83 +215,6 @@
 
     </div>
 
-    <script>
-    let researchability = '{{$result['researchability']}}';
-    let social = '{{$result['social']}}';
-    let reality = '{{$result['reality']}}';
-    let sociability = '{{$result['sociability']}}';
-    let artisty = '{{$result['artisty']}}';
-    if (researchability === '0' ){
-        researchability = 1
-    }
-    if (researchability >= '5' ){
-        researchability = 5
-    }
-    if (social === '0'){
-        social = 1
-    }
-    if (social >= '5'){
-        social = 5
-    }
-    if (reality === '0') {
-        reality = 1
-    }
-    if (reality >= '5') {
-        reality = 5
-    }
-    if (sociability === '0'){
-        sociability = 1
-    }
-    if (sociability >= '5'){
-        sociability = 5
-    }
-    if (artisty === '0'){
-        artisty = 1
-    }
-    if (artisty >= '5'){
-        artisty = 5
-    }
-
-    var myRadarChart = new Chart(document.getElementById('radar'), {
-        type: 'radar',
-        data: {
-            labels: ['研究性', '社会性', '現実性 ', '芸術性','社交性'],
-            datasets: [{
-                label:"測定結果",
-                data: [researchability, social, reality, sociability, artisty],
-                borderColor:"rgb(20,218,255)",
-                backgroundColor:"rgba(13,255,143,0.2)",
-                hoverBorderColor:"rgb(20,218,255)",
-                pointBorderColor:[
-                    "rgb(255,27,174)",
-                    "rgb(255,177,34)",
-                    "rgb(100,255,43)",
-                    "rgb(41,204,255)",
-                    "rgb(28,43,255)"
-                ]
-            }],
-        },
-        options: {
-            scale: {
-                angleLines: {
-                    display: false
-                },
-                ticks: {
-                    suggestedMin: 0,
-                    suggestedMax: 5,
-                }
-            },
-            elements:
-                {
-                    line:
-                        {
-                            tension:0,
-                            borderWidth:2
-                        }
-                }
-        },
-    });
-    </script>
 </body>
 
 </html>
