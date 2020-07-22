@@ -130,7 +130,7 @@
                             let myRadarChart = new Chart(document.getElementById('radar' + idNum), {
                                 type: 'radar',
                                 data: {
-                                    labels: ['研究性', '社会性', '現実性 ', '芸術性','社交性'],
+                                    labels: ['研究性', '社会性', '現実性 ','社交性','芸術性'],
                                     datasets: [{
                                         label:"測定結果",
                                         data: [researchability, social, reality, sociability, artisty],
