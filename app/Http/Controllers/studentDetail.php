@@ -6,6 +6,7 @@ use App\models\job;
 use App\models\Jobs;
 use App\models\Result;
 use App\models\ResultPhase;
+use App\models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -14,6 +15,11 @@ class studentDetail extends Controller
     public function index($id,Request $request){
 
         $result = Result::where('id',$id)->first();
+
+        $student_id = Result::where('id',$id)->value('student_id');
+
+        $select_result = Result::where('student_id',$student_id)->get();
+
         $categories = [
             'a'=>$result->researchability,
             'b'=>$result->social,
@@ -36,12 +42,11 @@ class studentDetail extends Controller
         $result_phase = ResultPhase::where('type',$personalities)->first();
         $jobs = Jobs::where('type',$personalities)->get();
 
-        
-
         return view('studentDetail')
             ->with('result',$result)
             ->with('result_phase',$result_phase)
-            ->with('jobs',$jobs);
+            ->with('jobs',$jobs)
+            ->with('select_result',$select_result);
     }
 
     public function insert($id,Request $request){
@@ -57,5 +62,20 @@ class studentDetail extends Controller
         ]);
 
         return redirect('studentDetail/'.$result_id);
+    }
+
+    public function addComment($id,Request $request) {
+        $addComment = $request->all();
+        $result = Result::select('student_id')->where('id',$id)->first();
+        Comment::insert([
+            'student_id' => $result->student_id,
+            'teacher_id' => $request->session()->get('id'),
+            'question_id' => 0,
+            'test_id' => $id,
+            'teacher_text' => $addComment['teacher_text'],
+            'student_text' => '',
+        ]);
+
+        return redirect('studentDetail/'.$id);
     }
 }

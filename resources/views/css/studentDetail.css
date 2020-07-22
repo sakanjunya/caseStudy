@@ -1,0 +1,26 @@
+.raw {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.left {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.right {
+    width: 25%;
+    height: 100%;
+}
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+.nav {
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.nav-item {
+    width: 100%;
+}
