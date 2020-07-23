@@ -25,6 +25,8 @@ class studentDetail extends Controller
         $select_results = Result::where('student_id',$student_id)->get()->toArray();
         $select = Result::where('student_id',$student_id)->get();
 
+        $comment = Comment::where('student_id',$student_id)->get();
+
         foreach ($select_results as $select_result){
             $categories = [
                 'a'=>$select_result['researchability'],
@@ -56,6 +58,7 @@ class studentDetail extends Controller
         return view('studentDetail')
             ->with('result',$result)
             ->with('results',$results)
+            ->with('comment',$comment)
             ->with('select_results',$select);
     }
 
