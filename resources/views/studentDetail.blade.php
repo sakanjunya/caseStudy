@@ -62,12 +62,6 @@
     <div>
         @include('header.teacherLoginHeader')
     </div>
-<?php
-    // echo '<pre>'.var_dump($select_result).'</pre>';
-    // コメントタブ選択時にパラメータとアドバイスの切り替えができへん
-    // 画面が描画された時にパラメータとアドバイスが表示されない。（コメントクリックしたら反応する）
-    // コメントはデータベースに格納できてない。
-?>
     <div class="row text-center">
         <!-- アドバイス -->
         <div class="left col-8 tab-content">
@@ -88,7 +82,6 @@
                     <canvas id="radar{{$loop->iteration}}" class="chartjs-render-monitor"></canvas>
                     <script>
                         $(document).ready(function(){
-
                             let researchability = '{{$select_result['researchability']}}';
                             let social = '{{$select_result['social']}}';
                             let reality = '{{$select_result['reality']}}';
@@ -193,11 +186,9 @@
             コメント
             <ul class="nav w-100 nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
                 @foreach($select_results as $value)
-                    <!-- <li class="nav-item  border-bottom">
-                    <a class="nav-link" id="{{ 'item'.$loop->iteration.'-tab'}}" data-toggle="tab" href="{{ '#'.$loop->iteration }}" role="tab" aria-controls="{{ 'item'.$loop->iteration }}" aria-selected="false">{{ $value['update_at']}}辻亮太ようやく就活始める様子。どこのブラック企業様がいいか。</a>
-                    </li> -->
+
                     <li class="nav-item  border-bottom">
-                        <a class="nav-link" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="<?php echo ($loop->first) ? 'true' : 'false'; ?>">{{ $value['update_at']}}辻亮太ようやく就活始める予定。</a>
+                        <a class="nav-link" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="{{ ($loop->first) ? 'true' : 'false' }}">{{ $value['update_at']}}辻亮太ようやく就活始める予定。</a>
                     </li>
                 @endforeach
             </ul>
