@@ -17,7 +17,7 @@ class studentDetail extends Controller
      *
      * */
     public function index($id,Request $request){
-        
+
         $result = Result::where('id',$id)->first();
 
         $student_id = Result::where('id',$id)->value('student_id');
@@ -67,7 +67,6 @@ class studentDetail extends Controller
             ->with('comment',$comment)
             ->with('select_results',$select);
     }
-
 
 
     public function insert($id,Request $request){
