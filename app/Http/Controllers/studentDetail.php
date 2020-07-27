@@ -50,6 +50,9 @@ class studentDetail extends Controller
             }
 
             $result_phase['result_phase'] = ResultPhase::where('type',$personality)->get()->toArray();
+            $jobs['unko'] = Jobs::leftJoin('jobs.job_name', '=', 'interviews','%interviews.dream%')
+                ->where('jobs.type',$personality)->get();
+            var_dump($jobs['unko']);
             $jobs['jobs'] = Jobs::where('type',$personality)->get()->toArray();
 
             $results[] = array_merge($select_result,$result_phase,$jobs);
