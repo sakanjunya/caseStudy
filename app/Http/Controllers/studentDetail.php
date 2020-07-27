@@ -27,6 +27,11 @@ class studentDetail extends Controller
 
         $comment = Comment::where('student_id',$student_id)->get();
 
+        $union = Jobs::leftJoin('interviews', 'interviews.dream', '=', 'jobs.job_name')
+        ->select('jobs.job_name', 'jobs.job_description','interviews.club','interviews.high_school','interviews.university')
+        ->get();
+        // echo $union_job;
+
         foreach ($select_results as $select_result){
             $categories = [
                 'a'=>$select_result['researchability'],
@@ -59,6 +64,7 @@ class studentDetail extends Controller
             ->with('result',$result)
             ->with('results',$results)
             ->with('comment',$comment)
+            ->with('union',$union)
             ->with('select_results',$select);
     }
 
