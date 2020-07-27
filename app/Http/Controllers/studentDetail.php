@@ -17,7 +17,7 @@ class studentDetail extends Controller
      *
      * */
     public function index($id,Request $request){
-        
+
         $result = Result::where('id',$id)->first();
 
         $student_id = Result::where('id',$id)->value('student_id');
@@ -26,6 +26,8 @@ class studentDetail extends Controller
         $select = Result::where('student_id',$student_id)->get();
 
         $comment = Comment::where('student_id',$student_id)->get();
+
+
 
         foreach ($select_results as $select_result){
             $categories = [
@@ -49,13 +51,21 @@ class studentDetail extends Controller
                 }
             }
 
+            $union['jobs'] = Jobs::leftJoin('interviews', 'interviews.dream', '=', 'jobs.job_name')
+                ->select('jobs.job_name', 'jobs.job_description','interviews.interviews','interviews.club','interviews.high_school','interviews.university')
+                ->where('jobs.type',$personality)
+                ->get()->toArray();
+
             $result_phase['result_phase'] = ResultPhase::where('type',$personality)->get()->toArray();
+<<<<<<< HEAD
             $jobs['unko'] = Jobs::leftJoin('jobs.job_name', '=', 'interviews','%interviews.dream%')
                 ->where('jobs.type',$personality)->get();
             var_dump($jobs['unko']);
             $jobs['jobs'] = Jobs::where('type',$personality)->get()->toArray();
+=======
+>>>>>>> matsusaka
 
-            $results[] = array_merge($select_result,$result_phase,$jobs);
+            $results[] = array_merge($select_result,$result_phase,$union);
         }
 
         return view('studentDetail')
@@ -64,7 +74,6 @@ class studentDetail extends Controller
             ->with('comment',$comment)
             ->with('select_results',$select);
     }
-
 
 
     public function insert($id,Request $request){
