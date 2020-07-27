@@ -53,6 +53,7 @@ class studentDetail extends Controller
 
             $union['jobs'] = Jobs::leftJoin('interviews', 'interviews.dream', '=', 'jobs.job_name')
                 ->select('jobs.job_name', 'jobs.job_description','interviews.interviews','interviews.club','interviews.high_school','interviews.university')
+                ->where('jobs.type',$personality)
                 ->get()->toArray();
 
             $result_phase['result_phase'] = ResultPhase::where('type',$personality)->get()->toArray();
