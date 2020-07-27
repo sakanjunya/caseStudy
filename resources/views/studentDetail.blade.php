@@ -172,8 +172,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$job['job_name']}}</h5>
                                 <p class="card-text">{{$job['job_description']}}</p>
-                                <h5>{{$job['high_school']}}</h5>
-                                <p>{{$job['interviews']}}</p>
                             </div>
                         </div>
                     </div>
