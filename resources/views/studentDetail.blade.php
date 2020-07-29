@@ -168,7 +168,7 @@
                     <div class="col-md-12">
                         <!-- おすすめ　◎ -->
                         <div class="card mx-auto mt-5" style="height: 15rem; ">
-                            <img src="" class="card-img-top" alt="カード1の画像">
+                            <!-- <img src="" class="card-img-top" alt="カード1の画像"> -->
                             <div class="card-body">
                                 <h5 class="card-title">{{$job['job_name']}}</h5>
                                 <p class="card-text">{{$job['job_description']}}</p>
