@@ -67,7 +67,7 @@
         <div class="left col-8 tab-content">
 
             @foreach($results as $select_result)
-            <div class="tab-pane fade" id="item{{ substr($select_result['update_at'],0,10) }}" role="tabpanel" aria-labelledby="item{{ substr($select_result['update_at'],0,10) }}-tab">
+            <div class="tab-pane fade {{ ($loop->first) ? 'active in' : '' }}" id="item{{ $select_result['id'] }}" role="tabpanel" aria-labelledby="item{{ $select_result['id'] }}-tab">
                 <div class="col-md-6 mt-5 pt-5">
                     <div class="card border-primary mb-3">
                         <div class="card-header">アドバイス　/　テスト</div>
@@ -168,7 +168,7 @@
                     <div class="col-md-12">
                         <!-- おすすめ　◎ -->
                         <div class="card mx-auto mt-5" style="height: 15rem; ">
-                            <img src="" class="card-img-top" alt="カード1の画像">
+                            <!-- <img src="" class="card-img-top" alt="カード1の画像"> -->
                             <div class="card-body">
                                 <h5 class="card-title">{{$job['job_name']}}</h5>
                                 <p class="card-text">{{$job['job_description']}}</p>
@@ -185,16 +185,15 @@
         <div class="right col-4">
             コメント
             <ul class="nav w-100 nav-tabs shadow-sm  mb-5 bg-white rounded" role="tablist">
-                @foreach($select_results as $value)
-
+                @foreach($comment as $value)
                     <li class="nav-item  border-bottom">
-                        <a class="nav-link" id="item{{substr($value['update_at'],0,10)}}-tab" data-toggle="tab" href="#item{{ substr($value['update_at'],0,10) }}" role="tab" aria-controls="item{{ substr($value['update_at'],0,10) }}" aria-selected="{{ ($loop->first) ? 'true' : 'false' }}">{{ $value['update_at']}}辻亮太ようやく就活始める予定。</a>
+                        <a class="nav-link {{ ($loop->first) ? 'active' : '' }}" id="item{{$value['test_id']}}-tab" data-toggle="tab" href="#item{{ $value['test_id'] }}" role="tab" aria-controls="item{{ $value['test_id'] }}" aria-selected="{{ ($loop->first) ? 'true' : 'false' }}">{{ substr($value['update_at'],0,10)}} <p>{{ $value['teacher_text']}}</p></a>
                     </li>
                 @endforeach
             </ul>
             <div class="tab-content">
-                @foreach($select_results as $value)
-                <div class="tab-pane fade " id="item{{ substr($value['update_at'],0,10)}}" role="tabpanel" aria-labelledby="item{{substr($value['update_at'],0,10)}}-tab">This is a text of {{ $value['update_at']}}</div>
+                @foreach($comment as $value)
+                <div class="tab-pane fade " id="item{{ $value['test_id']}}" role="tabpanel" aria-labelledby="item{{substr($value['update_at'],0,10)}}-tab">This is a text of {{ substr($value['update_at'],0,10)}}</div>
                 @endforeach
                 <form action="../commentAdd/{{$result['id']}}" class="form-group" method="post">
                     @csrf

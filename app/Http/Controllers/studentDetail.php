@@ -22,8 +22,13 @@ class studentDetail extends Controller
 
         $student_id = Result::where('id',$id)->value('student_id');
 
-        $select_results = Result::where('student_id',$student_id)->get()->toArray();
+        $select_results = Result::where('student_id',$student_id) ->orderBy('id', 'desc')->get()->toArray();
+
         $select = Result::where('student_id',$student_id)->get();
+
+        $comment = Comment::where('student_id',$student_id)->get();
+
+
 
         foreach ($select_results as $select_result){
             $categories = [
@@ -47,18 +52,22 @@ class studentDetail extends Controller
                 }
             }
 
-            $result_phase['result_phase'] = ResultPhase::where('type',$personality)->get()->toArray();
-            $jobs['jobs'] = Jobs::where('type',$personality)->get()->toArray();
+            $union['jobs'] = Jobs::leftJoin('interviews', 'interviews.work', '=', 'jobs.job_name')
+                ->select('jobs.job_name', 'jobs.job_description','interviews.interviews','interviews.club','interviews.high_school','interviews.university')
+                ->where('jobs.type',$personality)
+                ->get()->toArray();
 
-            $results[] = array_merge($select_result,$result_phase,$jobs);
+            $result_phase['result_phase'] = ResultPhase::where('type',$personality)->get()->toArray();
+
+            $results[] = array_merge($select_result,$result_phase,$union);
         }
 
         return view('studentDetail')
             ->with('result',$result)
             ->with('results',$results)
+            ->with('comment',$comment)
             ->with('select_results',$select);
     }
-
 
 
     public function insert($id,Request $request){
